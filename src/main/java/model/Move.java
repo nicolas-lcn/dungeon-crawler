@@ -1,9 +1,9 @@
 package model;
 
 public class Move {
-    public String message;
+    public Direction direction;
 
-    public Move(String message) {
-        this.message = message;
+    public Move(Direction direction) {
+        this.direction = direction;
     }
 }
