@@ -17,5 +17,9 @@ public abstract class Character {
         return vitality;
     }
 
-    public abstract void attack();
+    public abstract void attack(Character target);
+
+    public void takeDamages(int damages){
+        vitality -= damages;
+    }
 }

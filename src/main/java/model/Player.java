@@ -32,20 +32,17 @@ public class Player extends Character {
     }
 
     @Override
-    public void attack(){
-        //TODO
+    public void attack(Character target){
+        target.takeDamages(strength);
     }
 
     public void equipItem(Item item){
         this.equippedItem = item;
+        equippedItem.applyEffect();
     }
 
     public void useItem(Item item){
         item.applyEffect();
-    }
-
-    public void takeDamages(int damages){
-        vitality -= damages;
     }
 
 }

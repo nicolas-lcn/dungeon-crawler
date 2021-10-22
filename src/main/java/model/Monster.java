@@ -7,12 +7,13 @@ public class Monster extends Character implements Component{
     }
 
     @Override
-    public void attack() {
-        //TODO
+    public void attack(Character target) {
+        target.takeDamages(strength);
     }
 
     @Override
     public void interact() {
     //TODO
     }
+
 }

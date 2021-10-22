@@ -1,16 +1,18 @@
 package model;
 
+import java.util.ArrayList;
+
 public abstract class Room {
 
     private Component component;
     private int nbPortals;
+    private Direction previousDirection;
 
-    public Room(Component component, int nbPortals) {
+    public Room(Component component, int nbPortals, Direction previousDirection) {
         this.component = component;
         this.nbPortals = nbPortals;
+        this.previousDirection = previousDirection;
     }
-
-    public abstract void getOut(Move move);
 
     public void interact(){
         component.interact();
@@ -19,4 +21,6 @@ public abstract class Room {
     public void removeComponent(){
         //TODO
     }
+
+    public abstract ArrayList<Direction> possibleDirections();
 }
