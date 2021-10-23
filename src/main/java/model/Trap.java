@@ -8,7 +8,7 @@ public class Trap implements Component{
     }
 
     @Override
-    public void interact() {
+    public void interact(Character player) {
     //TODO
     }
 }

@@ -1,5 +1,5 @@
 package model;
 
 public interface Component {
-    public void interact();
+    public void interact(Character player);
 }

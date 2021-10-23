@@ -2,6 +2,7 @@ package controller;
 
 import model.Move;
 import model.Room;
+import model.Character;
 
 public class MoveController {
 
@@ -9,8 +10,7 @@ public class MoveController {
         return room.possibleDirections().contains(move.getDirection());
     }
 
-    public void applyMove(Move move, Room room, RoomController controller){
-        if(isMoveAuthorized(move, room)) controller.getOut(move);
-        else System.out.println("A wall is in the way");
+    public void applyMove(Move move, Room room, Character player){
+
     }
 }

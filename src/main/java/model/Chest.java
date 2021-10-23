@@ -8,7 +8,7 @@ public class Chest implements Component{
     }
 
     @Override
-    public void interact() {
-
+    public void interact(Character player) {
+        player.gainItem(item);
     }
 }
