@@ -26,4 +26,6 @@ public class RandomController {
         //TODO
         return null;
     }
+
+    public static int randomPosition(int max){return random.nextInt(max);}
 }
