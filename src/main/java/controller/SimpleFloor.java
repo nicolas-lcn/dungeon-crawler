@@ -1,39 +1,51 @@
 package controller;
 
-import model.Direction;
-import model.Move;
-import model.SimpleRoom;
+import model.*;
+import model.Character;
 
-public class SimpleFloor extends Floor{
+import java.util.ArrayList;
 
-    public SimpleFloor(){
-        super();
-        addRoom(Direction.South);
+public class SimpleFloor implements Floor{
+
+    private int playerPositionX;
+    private ArrayList<SimpleRoom> map;
+
+
+    public SimpleFloor(Direction previousDirection, Character player){
+        map = new ArrayList<>(MAX_ROOM_NUMBER);
+        playerPositionX = 0;
+        addRoom(previousDirection, player);
+    }
+
+
+
+    @Override
+    public void exitRoom(Move move, Character player) {
+        addRoom(move.getOpposedDirection(), player);
+        System.out.println("on est sorti");
+        playerPositionX++;
     }
 
     @Override
-    public void exitRoom(Move move) {
-        switch(move.getDirection()){
-            case North:
-                ensurePositions();
-                playerPositionX += 1;
-            case South:
-                ensurePositions();
-                playerPositionX -= 1;
-            case East:
-                ensurePositions();
-                playerPositionY += 1;
-            case West:
-                ensurePositions();
-                playerPositionY -= 1;
-        }
-        addRoom(move.getOpposedDirection());
+    public int getPlayerPositionX() {
+        return playerPositionX;
     }
 
-    private void addRoom(Direction previousDirection){
-        roomMatrix.get(playerPositionX)
-                  .add(playerPositionY, new SimpleRoom(RandomController.randomComponent(),
-                                                       RandomController.randomPortalNumber(),
-                                                       previousDirection));
+    @Override
+    public int getPlayerPositionY() {
+        return 0;
+    }
+
+
+    @Override
+    public void addRoom(Direction direction, Character player) {
+        SimpleRoom room = new SimpleRoom(RandomController.randomComponent(), RandomController.randomPortalNumber(), direction);
+        map.add(room);
+        room.interact(player);
+    }
+
+    @Override
+    public Room getCurrentRoom() {
+        return map.get(playerPositionX);
     }
 }

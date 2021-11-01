@@ -1,9 +1,7 @@
 package controller;
 
 
-import model.Component;
-import model.Direction;
-import model.Item;
+import model.*;
 
 import java.util.Random;
 
@@ -20,7 +18,7 @@ public class RandomController {
         return null;
     }
 
-    public static int randomPortalNumber(){ return random.nextInt(4);}
+    public static int randomPortalNumber(){ return random.nextInt(3) + 1 ;}
 
     public static Item randomItem(){
         //TODO
