@@ -17,4 +17,13 @@ public class Inventory {
     public Item getItem(int index){
         return items.get(index);
     }
+
+    public String toString(){
+        StringBuilder inventory = new StringBuilder("[");
+        for(Item item : items){
+            inventory.append("; ").append(item.getName());
+        }
+        inventory.append("]");
+        return inventory.toString();
+    }
 }

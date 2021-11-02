@@ -8,9 +8,12 @@ public class SimpleRoom extends Room{
 
     public SimpleRoom(Component component, int nbPortals, Direction previousDirection) {
         super(component, nbPortals, previousDirection);
-        for(int portalNumber = 0; portalNumber<nbPortals; portalNumber++){
+        for(int portalNumber = 0; portalNumber<nbPortals;){
             Direction direction = RandomController.randomDirection();
-            if (direction != previousDirection) possibleDirections.add(direction);
+            if (direction != previousDirection && !possibleDirections().contains(direction)){
+                portalNumber++;
+                possibleDirections.add(direction);
+            }
         }
     }
 
