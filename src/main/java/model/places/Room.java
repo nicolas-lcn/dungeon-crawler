@@ -1,4 +1,8 @@
-package model;
+package model.places;
+
+import model.components.Component;
+import model.Direction;
+import model.Player;
 
 import java.util.ArrayList;
 
@@ -16,7 +20,7 @@ public abstract class Room {
         this.possibleDirections = new ArrayList<>();
     }
 
-    public void interact(Character player){
+    public void interact(Player player){
         component.interact(player);
     }
 

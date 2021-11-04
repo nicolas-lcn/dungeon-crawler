@@ -1,16 +1,12 @@
 package model;
 
-public abstract class Character {
+public class Character {
     protected int strength;
     protected int vitality;
-    protected Inventory inventory;
-    protected Item equippedItem;
 
     public Character(int strength, int vitality) {
         this.strength = strength;
         this.vitality = vitality;
-        inventory = new Inventory();
-        equippedItem = null;
     }
 
     public int getStrength() {
@@ -21,22 +17,19 @@ public abstract class Character {
         return vitality;
     }
 
-    public abstract void attack(Character target);
+    public void attack(Character target){
+        target.takeDamages(this.strength);
+    }
 
     public void takeDamages(int damages){
         vitality -= damages;
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
-    public void equipItem(Item item){
-        this.equippedItem = item;
-        equippedItem.applyEffect();
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
     }
-
-    public abstract void gainItem(Item item);
-
-    public abstract void giveItem(Character target, Item item);
 }

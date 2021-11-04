@@ -1,35 +1,50 @@
 package model;
 
+import controller.MoveController;
 import view.ConsoleView;
 import view.View;
 
-public class Player extends Character {
+public class Player{
+
+    private Inventory inventory;
+    private Character avatar;
+    private Direction lookingDirection;
 
     public Player(int strength, int vitality) {
-        super(strength, vitality);
+        avatar = new Character(strength, vitality);
+        inventory = new Inventory();
+        lookingDirection = Direction.North;
+
     }
 
-    public void goNorth() {
-        //TODO
+    public Move goNorth() {
+        return new Move(Direction.North);
     }
-    public void goSouth() {
-        //TODO
-    }
-
-    public void goEast() {
-        //TODO
-    }
-    public void goWest() {
-        //TODO
+    public Move goSouth() {
+        return new Move(Direction.South);
     }
 
-    @Override
-    public void attack(Character target){
-        target.takeDamages(strength);
+    public Move goEast() {
+        return new Move(Direction.East);
+    }
+    public Move goWest() {
+        return new Move(Direction.West);
     }
 
-    public void useItem(Item item){
-        item.applyEffect();
+    public void look(Direction direction){
+        this.lookingDirection = direction;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public Character getAvatar() {
+        return avatar;
+    }
+
+    public Direction getLookingDirection() {
+        return lookingDirection;
     }
 
     public void gainItem(Item item) {inventory.addItem(item);}

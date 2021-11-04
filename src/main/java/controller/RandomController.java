@@ -2,6 +2,10 @@ package controller;
 
 
 import model.*;
+import model.components.Chest;
+import model.components.Component;
+import model.components.Monster;
+import model.components.Trap;
 
 import java.util.Random;
 

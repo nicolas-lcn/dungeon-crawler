@@ -1,10 +1,12 @@
-package model;
+package model.places;
 
 import controller.RandomController;
+import model.components.Component;
+import model.Direction;
 
 import java.util.ArrayList;
 
-public class SimpleRoom extends Room{
+public class SimpleRoom extends Room {
 
     public SimpleRoom(Component component, int nbPortals, Direction previousDirection) {
         super(component, nbPortals, previousDirection);

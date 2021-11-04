@@ -1,8 +1,8 @@
-package controller;
+package model.places;
 
 import model.Direction;
 import model.Move;
-import model.Character;
+import model.Player;
 
 import java.util.ArrayList;
 
@@ -11,9 +11,9 @@ public abstract class Dungeon {
     public final ArrayList<Floor> maps = new ArrayList<>(MAX_FLOOR_NUMBER);
     protected int floorIndex;
 
-    public abstract void exitFloor(Move move, Character player);
+    public abstract void exitFloor(Move move, Player player);
 
-    public abstract void addFloor(Direction direction, Character player );
+    public abstract void addFloor(Direction direction, Player player );
 
     public abstract boolean isFloorEnd();
 

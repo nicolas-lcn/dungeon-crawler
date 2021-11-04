@@ -1,17 +1,22 @@
-package controller;
+package model.places;
 
-import model.*;
-import model.Character;
+import controller.RandomController;
+import model.Direction;
+import model.Move;
+import model.Player;
+import model.places.Floor;
+import model.places.Room;
+import model.places.SimpleRoom;
 
 import java.util.ArrayList;
 
-public class SimpleFloor implements Floor{
+public class SimpleFloor implements Floor {
 
     private int playerPositionX;
     private ArrayList<SimpleRoom> map;
 
 
-    public SimpleFloor(Direction previousDirection, Character player){
+    public SimpleFloor(Direction previousDirection, Player player){
         map = new ArrayList<>(MAX_ROOM_NUMBER);
         playerPositionX = 0;
         addRoom(previousDirection, player);
@@ -20,7 +25,7 @@ public class SimpleFloor implements Floor{
 
 
     @Override
-    public void exitRoom(Move move, Character player) {
+    public void exitRoom(Move move, Player player) {
         addRoom(move.getOpposedDirection(), player);
         System.out.println("on est sorti");
         playerPositionX++;
@@ -38,7 +43,7 @@ public class SimpleFloor implements Floor{
 
 
     @Override
-    public void addRoom(Direction direction, Character player) {
+    public void addRoom(Direction direction, Player player) {
         SimpleRoom room = new SimpleRoom(RandomController.randomComponent(), RandomController.randomPortalNumber(), direction);
         map.add(room);
         room.interact(player);
