@@ -4,6 +4,7 @@ import controller.RandomController;
 import model.Direction;
 import model.Move;
 import model.Player;
+import model.generators.ComponentGenerator;
 import model.places.Floor;
 import model.places.Room;
 import model.places.SimpleRoom;
@@ -14,11 +15,13 @@ public class SimpleFloor implements Floor {
 
     private int playerPositionX;
     private ArrayList<SimpleRoom> map;
+    private ComponentGenerator componentGenerator;
 
 
-    public SimpleFloor(Direction previousDirection, Player player){
+    public SimpleFloor(Direction previousDirection, Player player, ComponentGenerator componentGenerator){
         map = new ArrayList<>(MAX_ROOM_NUMBER);
         playerPositionX = 0;
+        this.componentGenerator = componentGenerator;
         addRoom(previousDirection, player);
     }
 
@@ -44,7 +47,7 @@ public class SimpleFloor implements Floor {
 
     @Override
     public void addRoom(Direction direction, Player player) {
-        SimpleRoom room = new SimpleRoom(RandomController.randomComponent(), RandomController.randomPortalNumber(), direction);
+        SimpleRoom room = new SimpleRoom(componentGenerator.generate(), RandomController.randomPortalNumber(), direction);
         map.add(room);
         room.interact(player);
     }

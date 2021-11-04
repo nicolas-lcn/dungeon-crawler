@@ -28,5 +28,6 @@ public abstract class Room {
         //TODO
     }
 
+
     public abstract ArrayList<Direction> possibleDirections();
 }

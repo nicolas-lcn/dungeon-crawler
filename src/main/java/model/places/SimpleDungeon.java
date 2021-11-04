@@ -3,10 +3,14 @@ package model.places;
 import model.Direction;
 import model.Move;
 import model.Player;
+import model.generators.ComponentGenerator;
 
 public class SimpleDungeon extends Dungeon {
 
-    public SimpleDungeon(Direction direction, Player player){
+    private ComponentGenerator componentGenerator;
+
+    public SimpleDungeon(Direction direction, Player player, ComponentGenerator componentGenerator){
+        this.componentGenerator = componentGenerator;
         floorIndex = 0;
         addFloor(direction, player);
     }
@@ -19,7 +23,7 @@ public class SimpleDungeon extends Dungeon {
 
     @Override
     public void addFloor(Direction direction, Player player) {
-        maps.add(new SimpleFloor(direction, player));
+        maps.add(new SimpleFloor(direction, player, componentGenerator));
     }
 
     @Override

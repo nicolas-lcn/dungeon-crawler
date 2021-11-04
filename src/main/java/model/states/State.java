@@ -1,12 +1,12 @@
 package model.states;
 
 public interface State {
-    void openInventory();
-    void closeInventory();
-    void gameOver();
-    void titleScreen();
-    void pauseGame();
-    void resumeGame();
-    void startFight();
-    void endFight();
+    public void openInventory();
+    public void closeInventory();
+    public void gameOver();
+    public void titleScreen();
+    public void pauseGame();
+    public void resumeGame();
+    public void startFight();
+    public void endFight();
 }

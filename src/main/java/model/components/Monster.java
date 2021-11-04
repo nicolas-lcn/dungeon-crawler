@@ -15,6 +15,7 @@ public class Monster implements Component {
         this.loot = item;
     }
 
+
     @Override
     public void interact(Player player) {
     //TODO

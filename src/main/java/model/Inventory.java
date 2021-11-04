@@ -31,6 +31,10 @@ public class Inventory {
         }
     }
 
+    public boolean hasItem(Item item){
+        return items.contains(item);
+    }
+
     public void removeItem(Item item){
         items.remove(item);
     }

@@ -17,18 +17,6 @@ public class RandomController {
         return Direction.values()[random.nextInt(4)];
     }
 
-    public static Component randomComponent(){
-        int componentNumber = 3;
-        switch (random.nextInt(componentNumber)+1){
-            case 1:
-                return new Monster(3,2,new Weapon("Poor-Weapon", 0));
-            case 2:
-                return new Trap(random.nextInt(10));
-            default:
-                return new Chest(randomItem());
-        }
-    }
-
     public static int randomPortalNumber(){ return random.nextInt(3) + 1 ;}
 
     public static Item randomItem(){
@@ -39,5 +27,5 @@ public class RandomController {
         return new Potion("Vitality Potion", random.nextInt(5));
     }
 
-    public static int randomPosition(int max){return random.nextInt(max);}
+    public static int randomInt(int bound){return random.nextInt(bound);}
 }
