@@ -12,6 +12,7 @@ public class Trap implements Component {
 
     @Override
     public void interact(Player player) {
-    //TODO
+        System.out.println("Piège ! ");
+        player.getAvatar().takeDamages(strength);
     }
 }

@@ -11,9 +11,10 @@ public class MoveController {
     }
 
     public static void applyMove(Move move, Room room, Player player, Floor floor){
-        if(isMoveAuthorized(move, room) /*&& player.getLookingDirection().equals(move.getDirection())*/) floor.exitRoom(move, player);
+        if(isMoveAuthorized(move, room))
+            floor.exitRoom(move, player);
         else{
-            System.out.println("Move unauthorized");
+            System.out.println("Un mur se trouve devant vous");
         }
     }
 }

@@ -1,12 +1,20 @@
 package model.states;
 
-public interface State {
-    public void openInventory();
-    public void closeInventory();
-    public void gameOver();
-    public void titleScreen();
-    public void pauseGame();
-    public void resumeGame();
-    public void startFight();
-    public void endFight();
+import model.GameState;
+
+public abstract class State {
+    public GameState gameState;
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public abstract void openInventory();
+    public abstract void closeInventory();
+    public abstract void gameOver();
+    public abstract void titleScreen();
+    public abstract void pauseGame();
+    public abstract void resumeGame();
+    public abstract void startFight();
+    public abstract void endFight();
 }

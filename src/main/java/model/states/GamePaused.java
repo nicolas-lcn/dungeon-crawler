@@ -2,44 +2,36 @@ package model.states;
 
 import model.states.State;
 
-public class GamePaused implements State {
+public class GamePaused extends State {
     @Override
-    public void openInventory() {
-
-    }
-
+    public void openInventory() {}
     @Override
-    public void closeInventory() {
-
-    }
+    public void closeInventory() {}
 
     @Override
-    public void gameOver() {
-
-    }
+    public void gameOver() {}
 
     @Override
     public void titleScreen() {
-
+        State state = new TitleScreen();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
-    public void pauseGame() {
-
-    }
+    public void pauseGame() {}
 
     @Override
     public void resumeGame() {
-
+        System.out.println("Retour au jeu...");
+        State state = new InGame();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
-    public void startFight() {
-
-    }
+    public void startFight() {}
 
     @Override
-    public void endFight() {
-
-    }
+    public void endFight() {}
 }

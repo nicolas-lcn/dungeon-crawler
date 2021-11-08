@@ -1,8 +1,6 @@
 package model.states;
 
-import model.states.State;
-
-public class GameOver extends State {
+public class FightState extends State{
     @Override
     public void openInventory() {}
 
@@ -13,11 +11,7 @@ public class GameOver extends State {
     public void gameOver() {}
 
     @Override
-    public void titleScreen() {
-        State state = new TitleScreen();
-        gameState.setState(state);
-        state.setGameState(gameState);
-    }
+    public void titleScreen() {}
 
     @Override
     public void pauseGame() {}
@@ -29,5 +23,10 @@ public class GameOver extends State {
     public void startFight() {}
 
     @Override
-    public void endFight() {}
+    public void endFight() {
+        System.out.println("Retour au jeu...");
+        State state = new InGame();
+        gameState.setState(state);
+        state.setGameState(gameState);
+    }
 }

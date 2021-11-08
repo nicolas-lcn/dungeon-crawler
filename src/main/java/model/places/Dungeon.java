@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class Dungeon {
     public static final int MAX_FLOOR_NUMBER = 5;
     public final ArrayList<Floor> maps = new ArrayList<>(MAX_FLOOR_NUMBER);
-    protected int floorIndex;
+    public int floorIndex;
 
     public abstract void exitFloor(Move move, Player player);
 

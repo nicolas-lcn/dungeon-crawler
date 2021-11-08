@@ -2,10 +2,13 @@ package model.states;
 
 import model.states.State;
 
-public class InGame implements State {
+public class InGame extends State {
     @Override
     public void openInventory() {
-
+        System.out.println("Voici votre Inventaire : ");
+        State state = new InventoryState();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
@@ -15,31 +18,35 @@ public class InGame implements State {
 
     @Override
     public void gameOver() {
-
+        System.out.println("Vous avez perdu...");
+        State state = new GameOver();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
-    public void titleScreen() {
-
-    }
+    public void titleScreen() {}
 
     @Override
     public void pauseGame() {
-
+        System.out.println("Jeu mis en pause...");
+        State state = new GamePaused();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
-    public void resumeGame() {
-
-    }
+    public void resumeGame() {}
 
     @Override
     public void startFight() {
+        System.out.println("Le combat commence ! ");
+        State state = new FightState();
+        gameState.setState(state);
+        state.setGameState(gameState);
 
     }
 
     @Override
-    public void endFight() {
-
-    }
+    public void endFight() {}
 }

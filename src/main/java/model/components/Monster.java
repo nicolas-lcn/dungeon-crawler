@@ -1,25 +1,26 @@
 package model.components;
 
+import model.*;
 import model.Character;
-import model.Item;
-import model.Player;
 import model.components.Component;
 
 public class Monster implements Component {
 
-    private Character avatar;
+    private final Character avatar;
     private Item loot;
+    private final FightCreator fightCreator;
 
-    public Monster(int strength, int vitality, Item item) {
+    public Monster(int strength, int vitality, Item item, FightCreator fightCreator) {
         avatar = new Character(strength, vitality);
         this.loot = item;
+        this.fightCreator = fightCreator;
     }
 
 
     @Override
     public void interact(Player player) {
-    //TODO
-        System.out.println("Start fight");
+        Fight fight = fightCreator.createFight(player.getAvatar(), this.avatar);
+        fight.fight();
     }
 
 }

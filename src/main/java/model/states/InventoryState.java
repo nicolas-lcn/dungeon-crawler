@@ -1,43 +1,35 @@
 package model.states;
 
-public class InventoryState implements State {
+public class InventoryState extends State {
     @Override
-    public void openInventory() {
-
-    }
+    public void openInventory() {}
 
     @Override
     public void closeInventory() {
-
+        System.out.println("Fermeture de l'inventaire");
+        resumeGame();
     }
 
     @Override
-    public void gameOver() {
-
-    }
+    public void gameOver() {}
 
     @Override
-    public void titleScreen() {
-
-    }
+    public void titleScreen() {}
 
     @Override
-    public void pauseGame() {
-
-    }
+    public void pauseGame() {}
 
     @Override
     public void resumeGame() {
-
+        System.out.println("Retour au jeu...");
+        State state = new InGame();
+        gameState.setState(state);
+        state.setGameState(gameState);
     }
 
     @Override
-    public void startFight() {
-
-    }
+    public void startFight() {}
 
     @Override
-    public void endFight() {
-
-    }
+    public void endFight() {}
 }
