@@ -12,7 +12,7 @@ public class BasicFight extends Fight {
 
     @Override
     public void fight() {
-        while(player.getVitality()>=0 || enemy.getVitality()>=0){
+        while(player.getVitality()>=0 && enemy.getVitality()>=0){
             player.attack(enemy);
             enemy.attack(player);
         }

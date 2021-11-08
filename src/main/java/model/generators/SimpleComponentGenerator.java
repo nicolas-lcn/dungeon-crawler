@@ -17,7 +17,7 @@ public class SimpleComponentGenerator extends ComponentGenerator{
 
     public SimpleComponentGenerator(ItemGenerator itemGenerator, GameState gameState){
         possibleComponents = new ArrayList<>();
-        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), new BasicFightCreator(gameState)));
+        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), new BasicFightCreator(gameState), gameState));
         possibleComponents.add(new Chest(itemGenerator.generate()));
         possibleComponents.add(new Trap(4));
     }

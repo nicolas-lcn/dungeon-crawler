@@ -23,14 +23,12 @@ public class AppCLI {
         gameState.resumeGame();
         SimpleComponentGenerator componentGenerator = new SimpleComponentGenerator(itemGenerator, gameState);
         Dungeon simpleDungeon = new SimpleDungeon(Direction.South, player, componentGenerator);
-        System.out.println("Création du donjon");
         CLIController cliController = new CLIController(gameState, player, simpleDungeon);
         while(player.getAvatar().getVitality()>0){
             System.out.println(gameState.state);
             String command = scanner.nextLine();
             if(command.equals("Q")) break;
             cliController.handleCommand(command);
-            System.out.println(simpleDungeon.floorIndex + "  // " + simpleDungeon.getCurrentFloor().getPlayerPositionX());
         }
         System.out.println(player.getInventory() + " " + player.getAvatar().getVitality());
 
