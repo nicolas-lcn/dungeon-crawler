@@ -2,7 +2,9 @@ package controller;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
@@ -18,6 +20,8 @@ import model.places.SimpleDungeon;
 import view.JavaFXView;
 import view.View;
 
+import java.io.File;
+import java.net.URL;
 import java.util.Scanner;
 
 public class App extends Application {
@@ -40,16 +44,18 @@ public class App extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Group root = new Group();
+        /*Group root = new Group();
         JavaFXView view = new JavaFXView();
         Text message = view.text;
         root.getChildren().add(message);
         root.getChildren().add(new Canvas(400,200));
         Scene scene = new Scene(root);
         Player player = new Player(6,60);
-        JavaFXController javaFXController = new JavaFXController(player);
+        //JavaFXController javaFXController = new JavaFXController(player);
         scene.setOnKeyPressed(javaFXController.eventHandler);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
     }
+
+
 }

@@ -5,10 +5,17 @@ import model.states.*;
 public class GameState {
     public State state;
 
+    public static GameState instance;
+
     public GameState(){
         this.state = new TitleScreen();
         this.state.setGameState(this);
         this.titleScreen();
+    }
+
+    public static GameState getInstance() {
+        if(instance == null) instance = new GameState();
+        return instance;
     }
 
     public void setState(State state){

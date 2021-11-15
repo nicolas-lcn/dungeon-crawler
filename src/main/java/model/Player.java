@@ -1,9 +1,5 @@
 package model;
 
-import controller.MoveController;
-import view.ConsoleView;
-import view.View;
-
 public class Player{
 
     private Inventory inventory;
