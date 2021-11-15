@@ -12,7 +12,7 @@ public class Player{
 
     public Player(int strength, int vitality) {
         avatar = new Character(strength, vitality);
-        inventory = new Inventory();
+        inventory = new Inventory(avatar);
         lookingDirection = Direction.North;
 
     }

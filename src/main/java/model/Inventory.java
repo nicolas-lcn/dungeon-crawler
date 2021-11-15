@@ -8,9 +8,12 @@ public class Inventory {
 
     private Item equippedItem;
 
-    public Inventory() {
+    private Character possessor;
+
+    public Inventory(Character possessor) {
         items = new ArrayList<>();
         equippedItem = null;
+        this.possessor = possessor;
     }
 
     public void addItem(Item item){
@@ -22,12 +25,12 @@ public class Inventory {
     }
 
     public void useItem(int index){
-        this.items.get(index).applyEffect();
+        this.items.get(index).applyEffect(possessor);
     }
 
     public void useItem(Item item){
         if(items.contains(item)){
-            item.applyEffect();
+            item.applyEffect(possessor);
         }
     }
 

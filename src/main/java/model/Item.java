@@ -11,5 +11,5 @@ public abstract class Item {
         return name;
     }
 
-    public abstract void applyEffect();
+    public abstract void applyEffect(Character target);
 }

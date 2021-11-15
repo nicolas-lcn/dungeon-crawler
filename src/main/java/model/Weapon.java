@@ -10,7 +10,7 @@ public class Weapon extends Item{
     }
 
     @Override
-    public void applyEffect() {
-        //TODO
+    public void applyEffect(Character target) {
+        target.setStrength(target.getStrength() + strength);
     }
 }

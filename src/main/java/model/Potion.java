@@ -10,7 +10,7 @@ public class Potion extends Item{
     }
 
     @Override
-    public void applyEffect() {
-        //TODO
+    public void applyEffect(Character target) {
+        target.setVitality(target.getVitality() + vitality);
     }
 }
