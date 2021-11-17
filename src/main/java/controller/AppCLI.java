@@ -23,7 +23,7 @@ public class AppCLI {
         gameState.resumeGame();
         SimpleComponentGenerator componentGenerator = new SimpleComponentGenerator(itemGenerator, gameState);
         Dungeon simpleDungeon = new SimpleDungeon(Direction.South, player, componentGenerator);
-        CLIController cliController = new CLIController(gameState, player, simpleDungeon);
+        CLIController cliController = new CLIController(player, simpleDungeon);
         while(player.getAvatar().getVitality()>0){
             System.out.println(gameState.state);
             String command = scanner.nextLine();

@@ -7,13 +7,13 @@ import model.Player;
 import model.places.Dungeon;
 import model.places.Room;
 
-public class CLIController {
+public class CLIController implements GameController{
     GameState gameState;
     Player player;
     Dungeon dungeon;
 
-    public CLIController(GameState gameState, Player player, Dungeon dungeon) {
-        this.gameState = gameState;
+    public CLIController(Player player, Dungeon dungeon) {
+        this.gameState = GameState.getInstance();
         this.player = player;
         this.dungeon = dungeon;
     }
@@ -79,7 +79,7 @@ public class CLIController {
         }
     }
 
-    public void handleInventory(Boolean isOpened){
+    public void handleInventory(boolean isOpened){
         if(isOpened) gameState.closeInventory();
         else {
             gameState.openInventory();

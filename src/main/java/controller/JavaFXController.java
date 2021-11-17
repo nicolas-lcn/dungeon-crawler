@@ -1,53 +1,33 @@
 package controller;
 
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Control;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Direction;
 import model.GameState;
 import model.Move;
 import model.Player;
+import model.generators.ComponentGenerator;
 import model.places.Dungeon;
 import model.places.Room;
+import model.places.SimpleDungeon;
 import view.JavaFXView;
 import view.View;
 
-public class JavaFXController {
-    EventHandler<? super KeyEvent> eventHandler;
-    GameState gameState;
-    Player player;
-    Dungeon dungeon;
-    View view;
+public class JavaFXController implements GameController{
 
-    public JavaFXController( Player player, Dungeon dungeon, View view) {
-        this.gameState = GameState.getInstance();
-        this.player = player;
-        this.dungeon = dungeon;
-        this.view = view;
+
+    @Override
+    public void handleMovement(Direction direction) {
+
     }
 
-    public void handleMovement(Direction direction){
-        Room room = dungeon.getCurrentFloor().getCurrentRoom();
-        if(player.getLookingDirection().equals(direction)){
-            Move move;
-            switch (direction){
-                case North:
-                    move = player.goNorth();
-                    break;
-                case East:
-                    move = player.goEast();
-                    break;
-                case West:
-                    move = player.goWest();
-                    break;
-                default:
-                    move = player.goSouth();
-            }
-            MoveController.applyMove(move, room , player, dungeon.getCurrentFloor());
-            view.handleMove(direction);
-        }
-        else{
-            player.look(direction);
-            view.handleLook(direction);
-        }
+    @Override
+    public void handleInventory(boolean isOpened) {
+
     }
 }

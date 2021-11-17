@@ -3,11 +3,13 @@ package view;
 import controller.JavaFXController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.*;
@@ -46,31 +48,4 @@ public class JavaFXView implements View{
     public final GameState gameState = GameState.getInstance();
 
 
-
-
-    public void handleMove(Direction direction){
-        System.out.println("Moving" + direction);
-    }
-
-    public void onClickNorth(){
-        handleMove(Direction.North);
-    }
-
-
-
-    public void handleLook(Direction direction){
-        System.out.println("Looking" + direction);
-    }
-
-    public void onQuit(ActionEvent actionEvent) {
-        Platform.exit();
-    }
-
-    public void onQuitScreen(MouseEvent mouseEvent) {
-        Platform.exit();
-    }
-
-    public void startGame(MouseEvent mouseEvent) {
-        gameState.resumeGame();
-    }
 }

@@ -54,7 +54,22 @@ public class App extends Application {
         //JavaFXController javaFXController = new JavaFXController(player);
         scene.setOnKeyPressed(javaFXController.eventHandler);
         primaryStage.setScene(scene);
-        primaryStage.show();*/
+        primaryStage.show();
+
+        Parent inGame = FXMLLoader.load(new File("src/main/java/view/GUIView.fxml").toURI().toURL());
+        Parent gameOver = FXMLLoader.load(new File("src/main/java/view/GameOver.fxml").toURI().toURL());
+        Parent titleScreen = FXMLLoader.load(new File("src/main/java/view/GameStart.fxml").toURI().toURL());
+
+        JavaFXView view = new JavaFXView();
+        Player player = new Player(5,60);
+        SimpleItemGenerator itemGenerator = new SimpleItemGenerator();
+        SimpleComponentGenerator componentGenerator = new SimpleComponentGenerator(itemGenerator, GameState.getInstance());
+        JavaFXController controller = new JavaFXController(player, view, componentGenerator);
+        controller.initView(primaryStage, inGame, titleScreen, gameOver);
+        view.setTitleScreen();
+        view.show();
+        view.setEventHandlers(controller.mouseEventHandler, controller.keyEventHandler);*/
+
     }
 
 

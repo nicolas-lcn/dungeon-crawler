@@ -133,7 +133,7 @@
             <Button id="East" fx:id="East" layoutX="1044.0" layoutY="762.0" mnemonicParsing="false" text="East" />
             <Button id="West" fx:id="West" layoutX="1171.0" layoutY="762.0" mnemonicParsing="false" text="West" />
             <Button id="South" fx:id="South" layoutX="1110.0" layoutY="822.0" mnemonicParsing="false" text="South" />
-            <Button id="North" fx:id="North" layoutX="1107.0" layoutY="699.0" mnemonicParsing="false" onMouseClicked="#onClickNorth" text="North" />
+            <Button id="North" fx:id="North" layoutX="1107.0" layoutY="699.0" mnemonicParsing="false" text="North" />
          </children>
     </AnchorPane>
   </children>
