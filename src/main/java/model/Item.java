@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Item {
+public abstract class Item{
     private String name;
 
     public Item(String name) {
@@ -10,6 +10,8 @@ public abstract class Item {
     public String getName() {
         return name;
     }
+
+    public abstract boolean equals(Object o);
 
     public abstract void applyEffect(Character target);
 }

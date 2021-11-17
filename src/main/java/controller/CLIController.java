@@ -67,7 +67,7 @@ public class CLIController implements GameController{
                 default:
                     move = player.goSouth();
             }
-            MoveController.applyMove(move, room , player, dungeon.getCurrentFloor());
+            MoveController.applyMove(move,dungeon, player);
         }
         else{
             player.look(direction);

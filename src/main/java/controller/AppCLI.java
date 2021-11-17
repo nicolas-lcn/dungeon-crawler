@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class AppCLI {
     public static void main(String[] args) {
-        Player player = new Player(5,60);
+        Player player = new Player(50,10000);
         SimpleItemGenerator itemGenerator = new SimpleItemGenerator();
         GameState gameState = new GameState();
         Scanner scanner = new Scanner(System.in);
@@ -26,9 +26,18 @@ public class AppCLI {
         CLIController cliController = new CLIController(player, simpleDungeon);
         while(player.getAvatar().getVitality()>0){
             System.out.println(gameState.state);
-            String command = scanner.nextLine();
-            if(command.equals("Q")) break;
-            cliController.handleCommand(command);
+            //String command = scanner.nextLine();
+            //if(command.equals("Q")) break;
+            //cliController.handleCommand(command);
+            cliController.handleCommand("M");
+            cliController.handleCommand("N");
+            cliController.handleCommand("N");
+            cliController.handleCommand("E");
+            cliController.handleCommand("E");
+            cliController.handleCommand("W");
+            cliController.handleCommand("W");
+            cliController.handleCommand("S");
+            cliController.handleCommand("S");
         }
         System.out.println(player.getInventory() + " " + player.getAvatar().getVitality());
 

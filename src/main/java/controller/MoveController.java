@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import model.places.Dungeon;
 import model.places.Floor;
 import model.places.Room;
 
@@ -10,9 +11,11 @@ public class MoveController {
         return room.possibleDirections().contains(move.getDirection());
     }
 
-    public static void applyMove(Move move, Room room, Player player, Floor floor){
-        if(isMoveAuthorized(move, room))
-            floor.exitRoom(move, player);
+    public static void applyMove(Move move, Dungeon dungeon, Player player) {
+        if (isMoveAuthorized(move, dungeon.getCurrentFloor().getCurrentRoom())){
+            if (dungeon.isFloorEnd()) dungeon.exitFloor(move, player);
+            dungeon.getCurrentFloor().exitRoom(move, player);
+        }
         else{
             System.out.println("Un mur se trouve devant vous");
         }

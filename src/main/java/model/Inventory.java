@@ -1,49 +1,40 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
 
-    private ArrayList<Item> items;
+    private final HashMap<Item, Integer> items;
 
     private Item equippedItem;
 
-    private Character possessor;
+    private final Character possessor;
 
     public Inventory(Character possessor) {
-        items = new ArrayList<>();
+        items = new HashMap<>();
         equippedItem = null;
         this.possessor = possessor;
     }
 
     public void addItem(Item item){
-        items.add(item);
+        if(items.containsKey(item)) items.put(item, items.get(item)+1);
+        else items.put(item, 1);
     }
 
-    public Item getItem(int index){
-        return items.get(index);
-    }
-
-    public void useItem(int index){
-        this.items.get(index).applyEffect(possessor);
-    }
 
     public void useItem(Item item){
-        if(items.contains(item)){
+        if(items.containsKey(item)){
             item.applyEffect(possessor);
         }
     }
 
     public boolean hasItem(Item item){
-        return items.contains(item);
+        return items.containsKey(item);
     }
 
     public void removeItem(Item item){
-        items.remove(item);
-    }
-
-    public void removeItem(int index){
-        items.remove(index);
+        items.put(item, items.get(item)-1);
     }
 
     public void equip(Item item){
@@ -51,12 +42,11 @@ public class Inventory {
         useItem(equippedItem);
     }
 
+    public int getNumber(Item item){
+        return items.get(item);
+    }
+
     public String toString(){
-        StringBuilder inventory = new StringBuilder("[");
-        for(Item item : items){
-            inventory.append("; ").append(item.getName());
-        }
-        inventory.append("]");
-        return inventory.toString();
+        return items.toString();
     }
 }
