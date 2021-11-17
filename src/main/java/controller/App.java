@@ -1,28 +1,7 @@
 package controller;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Direction;
-import model.GameState;
-import model.Player;
-import model.generators.SimpleComponentGenerator;
-import model.generators.SimpleItemGenerator;
-import model.places.Dungeon;
-import model.places.SimpleDungeon;
-import view.JavaFXView;
-import view.View;
-
-import java.io.File;
-import java.net.URL;
-import java.util.Scanner;
 
 public class App extends Application {
     /*

@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="GameOverAnchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.JavaFXView">
+<AnchorPane fx:id="GameOverAnchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TitleScreenView">
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/TitleScreen.png" />
+            <Image url="@../assets/TitleScreen.png" />
          </image>
       </ImageView>
       <Button fx:id="StartButton" layoutX="662.0" layoutY="611.0" mnemonicParsing="false"  opacity="0.0" prefHeight="135.0" prefWidth="631.0" />

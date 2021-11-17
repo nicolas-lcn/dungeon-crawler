@@ -45,7 +45,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="UI" prefHeight="1062.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.JavaFXView">
+<VBox id="UI" prefHeight="1062.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameView">
   <children>
     <MenuBar id="MenuBar" VBox.vgrow="NEVER">
       <menus>
@@ -92,7 +92,7 @@
                <children>
                   <ImageView id="RoomViewer" fx:id="RoomViewer" fitHeight="770.0" fitWidth="2304.0" layoutX="-768.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/full-room.png" />
+                        <Image url="@../assets/full-room.png" />
                      </image>
                   </ImageView>
                   <AnchorPane id="ComponentViewer" fx:id="ComponentViewer" layoutX="280.0" layoutY="299.0" prefHeight="373.0" prefWidth="200.0">
@@ -104,14 +104,14 @@
             </AnchorPane>
             <ImageView id="MainUI" fx:id="MainUI" fitHeight="1081.0" fitWidth="1919.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@assets/UI.png" />
+                  <Image url="@../assets/UI.png" />
                </image>
             </ImageView>
             <AnchorPane id="WeaponAnchor" fx:id="WeaponAnchor" layoutX="990.0" layoutY="325.0" prefHeight="220.0" prefWidth="211.0">
                <children>
                   <ImageView id="WeaponImage" fx:id="WeaponImage" fitHeight="221.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/sword.png" />
+                        <Image url="@../assets/sword.png" />
                      </image>
                   </ImageView>
                </children>
@@ -120,7 +120,7 @@
                <children>
                   <ImageView id="PotionImage" fx:id="PotionImage" fitHeight="252.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/potionGreen.png" />
+                        <Image url="@../assets/potionGreen.png" />
                      </image>
                   </ImageView>
                </children>

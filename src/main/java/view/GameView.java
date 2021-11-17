@@ -22,7 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-public class JavaFXView implements View{
+public class GameView implements View{
 
     public AnchorPane GameVisualisation;
     public ImageView RoomViewer;
@@ -43,9 +43,51 @@ public class JavaFXView implements View{
     public Button South;
     public Button North;
     public MenuItem QuitButton;
-    public Button StartButton;
-    public Button QuitButtonTitleScreen;
     public final GameState gameState = GameState.getInstance();
 
 
+    @Override
+    public void startGame() {
+
+    }
+
+    @Override
+    public void gameOver() {
+
+    }
+
+    @Override
+    public void titleScreen() {
+
+    }
+
+    @Override
+    public void openInventory() {
+
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
+    @Override
+    public void beginFight() {
+
+    }
+
+    @Override
+    public void stopFight() {
+
+    }
+
+    @Override
+    public void quitGame() {
+
+    }
+
+    @Override
+    public void setGameState() {
+
+    }
 }

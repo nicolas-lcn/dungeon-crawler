@@ -1,7 +1,6 @@
 package model.states;
 
 import model.GameState;
-import view.JavaFXView;
 
 public abstract class State {
     public GameState gameState;
