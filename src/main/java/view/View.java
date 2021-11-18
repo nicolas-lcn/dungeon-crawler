@@ -1,10 +1,6 @@
 package view;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import model.Direction;
-import model.Move;
 
 public interface View {
     public void startGame();
@@ -16,4 +12,5 @@ public interface View {
     public void stopFight();
     public void quitGame();
     public void setGameState();
+    public void handleMovement(Direction oldDirection, Direction newDirection);
 }

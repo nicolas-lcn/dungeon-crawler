@@ -4,6 +4,8 @@ import model.Direction;
 import model.Item;
 import model.states.State;
 
+import java.io.IOException;
+
 public class InGame extends State {
     @Override
     public void openInventory() {
@@ -23,6 +25,11 @@ public class InGame extends State {
         System.out.println("Vous avez perdu...");
         State state = new GameOver();
         gameState.setState(state);
+        try {
+            sceneController.switchGameOver();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         state.setGameState(gameState);
     }
 
@@ -45,6 +52,7 @@ public class InGame extends State {
         System.out.println("Le combat commence ! ");
         State state = new FightState();
         gameState.setState(state);
+        sceneController.switchFightScreen();
         state.setGameState(gameState);
 
     }

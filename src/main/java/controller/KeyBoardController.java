@@ -43,12 +43,12 @@ public class KeyBoardController {
     }
 
     public void handle(KeyEvent event){
-        System.out.println(event.getCode());
+
         switch (event.getCode()) {
-            case UP:    controller.handleMovement(Direction.North); break;
-            case DOWN:  controller.handleMovement(Direction.South); break;
-            case LEFT:  controller.handleMovement(Direction.East); break;
-            case RIGHT: controller.handleMovement(Direction.West); break;
+            case Z:  controller.handleMovement(Direction.North); break;
+            case S:  controller.handleMovement(Direction.South); break;
+            case Q:  controller.handleMovement(Direction.East); break;
+            case D: controller.handleMovement(Direction.West); break;
             case I: controller.handleInventory(false);break;
             case K: controller.handleInventory(true);break;
             case ESCAPE: controller.quitGame();break;

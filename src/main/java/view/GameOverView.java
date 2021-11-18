@@ -1,5 +1,7 @@
 package view;
 
+import model.Direction;
+
 public class GameOverView implements View{
     @Override
     public void startGame() {
@@ -43,6 +45,11 @@ public class GameOverView implements View{
 
     @Override
     public void setGameState() {
+
+    }
+
+    @Override
+    public void handleMovement(Direction oldDirection, Direction newDirection) {
 
     }
 }

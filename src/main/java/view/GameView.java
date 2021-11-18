@@ -1,26 +1,10 @@
 package view;
 
-import controller.JavaFXController;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.*;
-import javafx.stage.Stage;
 import model.Direction;
 import model.GameState;
-import model.Move;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 
 public class GameView implements View{
 
@@ -78,7 +62,6 @@ public class GameView implements View{
 
     @Override
     public void stopFight() {
-
     }
 
     @Override
@@ -89,5 +72,53 @@ public class GameView implements View{
     @Override
     public void setGameState() {
 
+    }
+
+    @Override
+    public void handleMovement(Direction oldDirection, Direction newDirection) {
+        switch(oldDirection){
+            case South:
+                switch(newDirection){
+                    case West:turnRight();break;
+                    case East:turnLeft();break;
+                    case North:turnRight();turnRight();break;
+                }
+                break;
+            case West:
+                switch(newDirection){
+                    case North:turnRight();break;
+                    case South:turnLeft();break;
+                    case East:turnRight();turnRight();break;
+                }
+                break;
+            case East:
+                switch(newDirection){
+                    case South:turnRight();break;
+                    case North:turnLeft();break;
+                    case West:turnRight();turnRight();break;
+                }
+                break;
+            case North:
+                switch(newDirection){
+                    case East:turnRight();break;
+                    case West:turnLeft();break;
+                    case South:turnRight();turnRight();break;
+                }
+                break;
+        }
+    }
+
+    public void turnRight(){
+        RoomViewer.setLayoutX(-1536);
+        System.out.println("turning");
+        RoomViewer.setLayoutX(0);
+        System.out.println("turning");
+        RoomViewer.setLayoutX(-768);
+    }
+
+    public void turnLeft(){
+        RoomViewer.setLayoutX(0);
+        RoomViewer.setLayoutX(-1536);
+        RoomViewer.setLayoutX(-768);
     }
 }

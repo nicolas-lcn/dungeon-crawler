@@ -20,4 +20,5 @@ public class MoveController {
             System.out.println("Un mur se trouve devant vous");
         }
     }
+
 }

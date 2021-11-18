@@ -1,5 +1,7 @@
 package view;
 
+import model.Direction;
+
 public class TitleScreenView implements View{
     @Override
     public void startGame() {
@@ -33,7 +35,7 @@ public class TitleScreenView implements View{
 
     @Override
     public void stopFight() {
-
+        System.out.println("called on " + this);
     }
 
     @Override
@@ -43,6 +45,11 @@ public class TitleScreenView implements View{
 
     @Override
     public void setGameState() {
+
+    }
+
+    @Override
+    public void handleMovement(Direction oldDirection, Direction newDirection) {
 
     }
 }

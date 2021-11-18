@@ -6,8 +6,10 @@ import model.Direction;
 import model.GameState;
 import model.Move;
 import model.Player;
+import model.generators.ComponentGenerator;
 import model.places.Dungeon;
 import model.places.Room;
+import view.View;
 
 public class CLIController implements GameController{
     GameState gameState;
@@ -116,6 +118,21 @@ public class CLIController implements GameController{
 
     @Override
     public void initGameState() {
+
+    }
+
+    @Override
+    public void setView(View view) {
+
+    }
+
+    @Override
+    public void setDungeon(Dungeon dungeon) {
+
+    }
+
+    @Override
+    public void setComponentGenerator(ComponentGenerator componentGenerator) {
 
     }
 
