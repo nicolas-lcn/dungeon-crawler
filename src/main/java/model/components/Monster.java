@@ -1,8 +1,13 @@
 package model.components;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.*;
 import model.Character;
 import model.components.Component;
+
+import java.io.File;
+import java.net.URISyntaxException;
 
 public class Monster implements Component {
 
@@ -28,4 +33,7 @@ public class Monster implements Component {
         gameState.endFight();
     }
 
+    public ImageView getImageView() {
+        return new ImageView( new Image(new File("src/main/java/view/assets/skeleton.png").toURI().toString()));
+    }
 }

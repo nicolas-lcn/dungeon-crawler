@@ -28,6 +28,9 @@ public abstract class Room {
         //TODO
     }
 
+    public Component getComponent() {
+        return component;
+    }
 
     public abstract ArrayList<Direction> possibleDirections();
 }

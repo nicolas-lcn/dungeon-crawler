@@ -1,6 +1,6 @@
 package view;
 
-import model.Direction;
+import javafx.scene.image.ImageView;
 
 public interface View {
     public void startGame();
@@ -14,4 +14,5 @@ public interface View {
     public void setGameState();
     public void turnRight();
     public void turnLeft();
+    public void setRoomComponentImage(ImageView image);
 }

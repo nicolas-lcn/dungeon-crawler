@@ -1,6 +1,6 @@
 package view;
 
-import model.Direction;
+import javafx.scene.image.ImageView;
 
 public class GameOverView implements View{
     @Override
@@ -55,6 +55,11 @@ public class GameOverView implements View{
 
     @Override
     public void turnLeft() {
+
+    }
+
+    @Override
+    public void setRoomComponentImage(ImageView image) {
 
     }
 

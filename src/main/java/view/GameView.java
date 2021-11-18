@@ -1,18 +1,15 @@
 package view;
 
-import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.util.Duration;
-import model.Direction;
 import model.GameState;
+
+import java.io.File;
 
 public class GameView implements View{
 
@@ -89,6 +86,11 @@ public class GameView implements View{
 
     public void turnLeft(){
         animateTurningLeft();
+    }
+
+    @Override
+    public void setRoomComponentImage(ImageView image) {
+        ComponentImage.setImage(image.getImage());
     }
 
     public void animateTurningRight(){

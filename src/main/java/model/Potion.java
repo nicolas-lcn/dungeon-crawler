@@ -3,6 +3,9 @@ package model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
+import java.net.URISyntaxException;
+
 public class Potion extends Item{
 
     private final int vitality;
@@ -10,7 +13,7 @@ public class Potion extends Item{
     public Potion(String name, int vitality) {
         super(name);
         this.vitality = vitality;
-        image = new ImageView(new Image("src/main/java/view/assets/potionGreen.png"));
+        image = new ImageView(new Image(new File("src/main/java/view/assets/potionGreen.png").toURI().toString()));
     }
 
     @Override
@@ -19,7 +22,6 @@ public class Potion extends Item{
     }
 
     public boolean equals(Object o){
-        System.out.println("Ptions");
         if (o == this) {
             return true;
         }
@@ -32,4 +34,6 @@ public class Potion extends Item{
 
         return p.getName().equals(this.getName()) && vitality == p.vitality;
     }
+
+
 }

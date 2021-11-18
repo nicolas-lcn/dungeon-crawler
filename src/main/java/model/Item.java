@@ -17,4 +17,8 @@ public abstract class Item{
     public abstract boolean equals(Object o);
 
     public abstract void applyEffect(Character target);
+
+    public ImageView getImage() {
+        return image;
+    }
 }

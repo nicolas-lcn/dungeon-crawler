@@ -107,6 +107,7 @@ public class JavaFXController implements GameController{
     @Override
     public void goForward() {
         MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
+        view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
     }
 
 }

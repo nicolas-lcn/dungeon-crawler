@@ -1,5 +1,6 @@
 package model.components;
 
+import javafx.scene.image.ImageView;
 import model.Item;
 import model.Player;
 import model.components.Component;
@@ -14,5 +15,10 @@ public class Chest implements Component {
     @Override
     public void interact(Player player) {
         player.gainItem(item);
+    }
+
+    @Override
+    public ImageView getImageView() {
+        return item.getImage();
     }
 }

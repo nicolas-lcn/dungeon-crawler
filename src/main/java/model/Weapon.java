@@ -3,6 +3,9 @@ package model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
+import java.net.URISyntaxException;
+
 public class Weapon extends Item{
 
     private int strength;
@@ -10,7 +13,7 @@ public class Weapon extends Item{
     public Weapon(String name, int strength) {
         super(name);
         this.strength = strength;
-        image = new ImageView(new Image("src/main/java/view/assets/sword.png"));
+        image = new ImageView(new Image(new File("src/main/java/view/assets/sword.png").toURI().toString()));
     }
 
     @Override
@@ -19,7 +22,6 @@ public class Weapon extends Item{
     }
 
     public boolean equals(Object o){
-        System.out.println("Weapons");
         if (o == this) {
             return true;
         }
