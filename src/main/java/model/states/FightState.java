@@ -1,5 +1,8 @@
 package model.states;
 
+import model.Direction;
+import model.Item;
+
 public class FightState extends State{
     @Override
     public void openInventory() {}
@@ -28,5 +31,15 @@ public class FightState extends State{
         State state = new InGame();
         gameState.setState(state);
         state.setGameState(gameState);
+    }
+
+    @Override
+    public void handleUseItem(Item item) {
+
+    }
+
+    @Override
+    public void handleMovement(Direction direction) {
+
     }
 }

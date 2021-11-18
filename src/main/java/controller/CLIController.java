@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import model.Direction;
 import model.GameState;
 import model.Move;
@@ -89,6 +91,31 @@ public class CLIController implements GameController{
 
     @Override
     public void startGame() {
+
+    }
+
+    @Override
+    public void quitGame() {
+
+    }
+
+    @Override
+    public void handleUseItem() {
+
+    }
+
+    @Override
+    public void setEventHandler(KeyBoardController keyBoardController) {
+
+    }
+
+    @Override
+    public EventHandler<? super KeyEvent> getEventHandler() {
+        return null;
+    }
+
+    @Override
+    public void initGameState() {
 
     }
 

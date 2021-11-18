@@ -15,6 +15,7 @@ public class Potion extends Item{
     }
 
     public boolean equals(Object o){
+        System.out.println("Ptions");
         if (o == this) {
             return true;
         }

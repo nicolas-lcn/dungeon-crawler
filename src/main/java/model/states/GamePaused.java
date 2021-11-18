@@ -1,5 +1,7 @@
 package model.states;
 
+import model.Direction;
+import model.Item;
 import model.states.State;
 
 public class GamePaused extends State {
@@ -34,4 +36,14 @@ public class GamePaused extends State {
 
     @Override
     public void endFight() {}
+
+    @Override
+    public void handleUseItem(Item item) {
+
+    }
+
+    @Override
+    public void handleMovement(Direction direction) {
+
+    }
 }

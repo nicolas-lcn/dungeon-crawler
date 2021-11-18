@@ -15,6 +15,7 @@ public class Weapon extends Item{
     }
 
     public boolean equals(Object o){
+        System.out.println("Weapons");
         if (o == this) {
             return true;
         }

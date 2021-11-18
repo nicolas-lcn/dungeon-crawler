@@ -2,6 +2,10 @@ package controller;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.GameState;
+import model.Player;
+import model.generators.SimpleComponentGenerator;
+import model.generators.SimpleItemGenerator;
 
 public class App extends Application {
     /*
@@ -23,6 +27,21 @@ public class App extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        GameController javaFXController = new JavaFXController();
+        FXSceneController fxSceneController = FXSceneController.getInstance();
+        fxSceneController.setPrimaryStage(primaryStage);
+        fxSceneController.setGameController(javaFXController);
+        KeyBoardController keyBoardController = new KeyBoardController(javaFXController);
+        javaFXController.setEventHandler(keyBoardController);
+        javaFXController.initGameState();
+        SimpleItemGenerator itemGenerator = new SimpleItemGenerator();
+        SimpleComponentGenerator componentGenerator = new SimpleComponentGenerator(itemGenerator, GameState.getInstance());
+        Player player = new Player(6,60);
+        primaryStage.show();
+
+
+
         /*Group root = new Group();
         JavaFXView view = new JavaFXView();
         Text message = view.text;

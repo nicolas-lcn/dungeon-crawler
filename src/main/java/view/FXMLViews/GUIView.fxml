@@ -62,7 +62,7 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Preferences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="QuitButton" mnemonicParsing="false" onAction="#onQuit" text="Quit" />
+            <MenuItem fx:id="QuitButton" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">

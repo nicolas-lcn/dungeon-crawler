@@ -1,5 +1,7 @@
 package model.states;
 
+import model.Direction;
+import model.Item;
 import model.states.State;
 
 public class GameOver extends State {
@@ -30,4 +32,14 @@ public class GameOver extends State {
 
     @Override
     public void endFight() {}
+
+    @Override
+    public void handleUseItem(Item item) {
+
+    }
+
+    @Override
+    public void handleMovement(Direction direction) {
+
+    }
 }
