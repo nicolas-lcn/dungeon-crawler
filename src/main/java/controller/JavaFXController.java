@@ -61,37 +61,6 @@ public class JavaFXController implements GameController{
     }
 
     @Override
-    public void handleMovement(Direction direction) {
-        view.handleMovement(player.getLookingDirection(), direction);
-        Room room = dungeon.getCurrentFloor().getCurrentRoom();
-        if(player.getLookingDirection().equals(direction)){
-            Move move;
-            switch (direction){
-                case North:
-                    move = player.goNorth();
-                    break;
-                case East:
-                    move = player.goEast();
-                    break;
-                case West:
-                    move = player.goWest();
-                    break;
-                default:
-                    move = player.goSouth();
-            }
-            MoveController.applyMove(move,dungeon, player);
-        }
-        else{
-            player.look(direction);
-            if(room.possibleDirections().contains(direction)) {
-                System.out.println("Un portail vers une autre dimension se trouve devant vous...");
-            } else {
-                System.out.println("Devant vous ne se trouve qu'un mur de briques...");
-            }
-        }
-    }
-
-    @Override
     public void handleInventory(boolean isOpened) {
     }
 
@@ -116,8 +85,28 @@ public class JavaFXController implements GameController{
         return player;
     }
 
-    public Direction getProperDirection(){
+    @Override
+    public void handleRotation(Direction direction) {
         int playerLookingDirection = Direction.valueOf(player.getLookingDirection().toString()).ordinal();
-        return null;
+        switch(direction){
+            case East:
+                if(playerLookingDirection+1 > Direction.values().length-1) playerLookingDirection = 0;
+                else playerLookingDirection++;
+                view.turnRight();
+                break;
+            case West:
+                if(playerLookingDirection-1 < 0) playerLookingDirection = Direction.values().length-1;
+                else playerLookingDirection--;
+                view.turnLeft();
+                break;
+
+        }
+        player.look(Direction.values()[playerLookingDirection]);
     }
+
+    @Override
+    public void goForward() {
+        MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
+    }
+
 }

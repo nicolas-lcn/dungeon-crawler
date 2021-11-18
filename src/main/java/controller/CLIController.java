@@ -136,4 +136,19 @@ public class CLIController implements GameController{
 
     }
 
+    @Override
+    public Player getPlayer() {
+        return null;
+    }
+
+    @Override
+    public void handleRotation(Direction direction) {
+
+    }
+
+    @Override
+    public void goForward() {
+
+    }
+
 }

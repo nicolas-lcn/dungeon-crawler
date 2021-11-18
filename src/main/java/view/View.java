@@ -12,5 +12,6 @@ public interface View {
     public void stopFight();
     public void quitGame();
     public void setGameState();
-    public void handleMovement(Direction oldDirection, Direction newDirection);
+    public void turnRight();
+    public void turnLeft();
 }

@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Weapon extends Item{
 
     private int strength;
@@ -7,6 +10,7 @@ public class Weapon extends Item{
     public Weapon(String name, int strength) {
         super(name);
         this.strength = strength;
+        image = new ImageView(new Image("src/main/java/view/assets/sword.png"));
     }
 
     @Override

@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Potion extends Item{
 
     private final int vitality;
@@ -7,6 +10,7 @@ public class Potion extends Item{
     public Potion(String name, int vitality) {
         super(name);
         this.vitality = vitality;
+        image = new ImageView(new Image("src/main/java/view/assets/potionGreen.png"));
     }
 
     @Override

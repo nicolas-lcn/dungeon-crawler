@@ -49,7 +49,13 @@ public class GameOverView implements View{
     }
 
     @Override
-    public void handleMovement(Direction oldDirection, Direction newDirection) {
+    public void turnRight() {
 
     }
+
+    @Override
+    public void turnLeft() {
+
+    }
+
 }

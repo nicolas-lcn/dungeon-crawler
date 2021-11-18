@@ -1,8 +1,16 @@
 package view;
 
+import javafx.animation.PathTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 import model.Direction;
 import model.GameState;
 
@@ -28,6 +36,7 @@ public class GameView implements View{
     public Button North;
     public MenuItem QuitButton;
     public final GameState gameState = GameState.getInstance();
+    boolean isAnimationFinished;
 
 
     @Override
@@ -74,51 +83,104 @@ public class GameView implements View{
 
     }
 
-    @Override
-    public void handleMovement(Direction oldDirection, Direction newDirection) {
-        switch(oldDirection){
-            case South:
-                switch(newDirection){
-                    case West:turnRight();break;
-                    case East:turnLeft();break;
-                    case North:turnRight();turnRight();break;
-                }
-                break;
-            case West:
-                switch(newDirection){
-                    case North:turnRight();break;
-                    case South:turnLeft();break;
-                    case East:turnRight();turnRight();break;
-                }
-                break;
-            case East:
-                switch(newDirection){
-                    case South:turnRight();break;
-                    case North:turnLeft();break;
-                    case West:turnRight();turnRight();break;
-                }
-                break;
-            case North:
-                switch(newDirection){
-                    case East:turnRight();break;
-                    case West:turnLeft();break;
-                    case South:turnRight();turnRight();break;
-                }
-                break;
-        }
-    }
-
     public void turnRight(){
-        RoomViewer.setLayoutX(-1536);
-        System.out.println("turning");
-        RoomViewer.setLayoutX(0);
-        System.out.println("turning");
-        RoomViewer.setLayoutX(-768);
+        animateTurningRight();
     }
 
     public void turnLeft(){
-        RoomViewer.setLayoutX(0);
-        RoomViewer.setLayoutX(-1536);
-        RoomViewer.setLayoutX(-768);
+        animateTurningLeft();
     }
+
+    public void animateTurningRight(){
+
+        //Creating Translate Transition
+        TranslateTransition translateTransitionLeftToCenter = new TranslateTransition();
+
+        //Setting the duration of the transition
+        translateTransitionLeftToCenter.setDuration(Duration.millis(1000));
+
+        //Setting the node for the transition
+        translateTransitionLeftToCenter.setNode(RoomViewer);
+
+        //Setting the value of the transition along the x axis.
+        translateTransitionLeftToCenter.setFromX(736);
+        translateTransitionLeftToCenter.setToX(0);
+
+        //Setting the cycle count for the transition
+        translateTransitionLeftToCenter.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        translateTransitionLeftToCenter.setAutoReverse(false);
+
+        //Creating Translate Transition
+        TranslateTransition translateTransitionCenterToRight = new TranslateTransition();
+
+        //Setting the duration of the transition
+        translateTransitionCenterToRight.setDuration(Duration.millis(1000));
+
+        //Setting the node for the transition
+        translateTransitionCenterToRight.setNode(RoomViewer);
+
+        //Setting the value of the transition along the x axis.
+        translateTransitionCenterToRight.setFromX(0);
+        translateTransitionCenterToRight.setToX(-736);
+
+        //Setting the cycle count for the transition
+        translateTransitionCenterToRight.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        translateTransitionCenterToRight.setAutoReverse(false);
+
+
+        SequentialTransition seqT = new SequentialTransition(translateTransitionCenterToRight, translateTransitionLeftToCenter);
+        seqT.play();
+
+    }
+
+    public void animateTurningLeft(){
+
+        //Creating Translate Transition
+        TranslateTransition translateTransitionCenterToLeft = new TranslateTransition();
+
+        //Setting the duration of the transition
+        translateTransitionCenterToLeft.setDuration(Duration.millis(1000));
+
+        //Setting the node for the transition
+        translateTransitionCenterToLeft.setNode(RoomViewer);
+
+        //Setting the value of the transition along the x axis.
+        translateTransitionCenterToLeft.setFromX(0);
+        translateTransitionCenterToLeft.setToX(736);
+
+        //Setting the cycle count for the transition
+        translateTransitionCenterToLeft.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        translateTransitionCenterToLeft.setAutoReverse(false);
+
+        //Creating Translate Transition
+        TranslateTransition translateTransitionRightToCenter = new TranslateTransition();
+
+        //Setting the duration of the transition
+        translateTransitionRightToCenter.setDuration(Duration.millis(1000));
+
+        //Setting the node for the transition
+        translateTransitionRightToCenter.setNode(RoomViewer);
+
+        //Setting the value of the transition along the x axis.
+        translateTransitionRightToCenter.setFromX(-736);
+        translateTransitionRightToCenter.setToX(0);
+
+        //Setting the cycle count for the transition
+        translateTransitionRightToCenter.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        translateTransitionRightToCenter.setAutoReverse(false);
+
+
+        SequentialTransition seqT = new SequentialTransition(translateTransitionCenterToLeft, translateTransitionRightToCenter);
+        seqT.play();
+
+    }
+
 }

@@ -20,16 +20,13 @@ public class KeyBoardController {
         while (true) {
             switch (scanner.next()) {
                 case "z":
-                    controller.handleMovement(Direction.North);
-                    break;
-                case "s":
-                    controller.handleMovement(Direction.South);
+                    controller.goForward();
                     break;
                 case "q":
-                    controller.handleMovement(Direction.East);
+                    controller.handleRotation(Direction.East);
                     break;
                 case "d":
-                    controller.handleMovement(Direction.West);
+                    controller.handleRotation(Direction.West);
                     break;
                 case "i":
                     controller.handleInventory(false);
@@ -45,10 +42,9 @@ public class KeyBoardController {
     public void handle(KeyEvent event){
 
         switch (event.getCode()) {
-            case Z:  controller.handleMovement(Direction.North); break;
-            case S:  controller.handleMovement(Direction.South); break;
-            case Q:  controller.handleMovement(Direction.East); break;
-            case D: controller.handleMovement(Direction.West); break;
+            case Z:  controller.goForward(); break;
+            case Q:  controller.handleRotation(Direction.West); break;
+            case D:  controller.handleRotation(Direction.East); break;
             case I: controller.handleInventory(false);break;
             case K: controller.handleInventory(true);break;
             case ESCAPE: controller.quitGame();break;

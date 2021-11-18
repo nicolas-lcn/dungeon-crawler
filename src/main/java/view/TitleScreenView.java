@@ -49,7 +49,13 @@ public class TitleScreenView implements View{
     }
 
     @Override
-    public void handleMovement(Direction oldDirection, Direction newDirection) {
+    public void turnRight() {
 
     }
+
+    @Override
+    public void turnLeft() {
+
+    }
+
 }

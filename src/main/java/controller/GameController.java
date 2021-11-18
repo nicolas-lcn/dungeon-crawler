@@ -9,7 +9,6 @@ import model.places.Dungeon;
 import view.View;
 
 public interface GameController {
-    public void handleMovement(Direction direction);
     public void handleInventory(boolean isOpened);
     public void startGame();
     public void quitGame();
@@ -21,4 +20,6 @@ public interface GameController {
     public void setDungeon(Dungeon dungeon);
     public void setComponentGenerator(ComponentGenerator componentGenerator);
     public Player getPlayer();
+    public void handleRotation(Direction direction);
+    public void goForward();
 }

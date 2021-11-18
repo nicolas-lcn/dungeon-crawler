@@ -1,7 +1,10 @@
 package model;
 
+import javafx.scene.image.ImageView;
+
 public abstract class Item{
     private String name;
+    ImageView image;
 
     public Item(String name) {
         this.name = name;
