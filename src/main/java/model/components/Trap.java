@@ -17,12 +17,16 @@ public class Trap implements Component {
 
     @Override
     public void interact(Player player) {
-        System.out.println("Piège ! ");
         player.getAvatar().takeDamages(strength);
     }
 
     @Override
     public ImageView getImageView() {
         return new ImageView(new Image(new File("src/main/java/view/assets/bone_shield.png").toURI().toString()));
+    }
+
+    @Override
+    public String getInteractAlert() {
+        return "IT'S A TRAP !";
     }
 }

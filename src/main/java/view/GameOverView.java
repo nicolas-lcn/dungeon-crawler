@@ -63,4 +63,9 @@ public class GameOverView implements View{
 
     }
 
+    @Override
+    public void setUIText(String text) {
+
+    }
+
 }

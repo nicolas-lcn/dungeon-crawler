@@ -15,4 +15,5 @@ public interface View {
     public void turnRight();
     public void turnLeft();
     public void setRoomComponentImage(ImageView image);
+    public void setUIText(String text);
 }

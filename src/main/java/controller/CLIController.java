@@ -151,4 +151,14 @@ public class CLIController implements GameController{
 
     }
 
+    @Override
+    public void handleInventoryNavRight() {
+
+    }
+
+    @Override
+    public void handleInventoryNavLeft() {
+
+    }
+
 }

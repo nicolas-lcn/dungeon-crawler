@@ -21,4 +21,9 @@ public class Chest implements Component {
     public ImageView getImageView() {
         return item.getImage();
     }
+
+    @Override
+    public String getInteractAlert() {
+        return "You found : " + item.getName() + " !";
+    }
 }

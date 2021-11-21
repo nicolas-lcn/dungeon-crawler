@@ -30,7 +30,7 @@ public class SimpleFloor implements Floor {
     @Override
     public void exitRoom(Move move, Player player) {
         addRoom(move.getOpposedDirection(), player);
-        System.out.println("on est sorti");
+        System.out.println("you're out");
         playerPositionX++;
     }
 

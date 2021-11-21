@@ -36,4 +36,9 @@ public class Monster implements Component {
     public ImageView getImageView() {
         return new ImageView( new Image(new File("src/main/java/view/assets/skeleton.png").toURI().toString()));
     }
+
+    @Override
+    public String getInteractAlert() {
+        return "";
+    }
 }

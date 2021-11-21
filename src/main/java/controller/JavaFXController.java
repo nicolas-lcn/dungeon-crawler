@@ -101,6 +101,9 @@ public class JavaFXController implements GameController{
                 break;
 
         }
+        if(dungeon.getCurrentFloor().getCurrentRoom().possibleDirections().contains(direction))
+            System.out.println("porte devant");
+            //view.setRoomComponentImage();
         player.look(Direction.values()[playerLookingDirection]);
     }
 
@@ -108,6 +111,16 @@ public class JavaFXController implements GameController{
     public void goForward() {
         MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
         view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
+    }
+
+    @Override
+    public void handleInventoryNavRight() {
+
+    }
+
+    @Override
+    public void handleInventoryNavLeft() {
+
     }
 
 }

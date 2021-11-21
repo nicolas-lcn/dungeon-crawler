@@ -22,4 +22,6 @@ public interface GameController {
     public Player getPlayer();
     public void handleRotation(Direction direction);
     public void goForward();
+    public void handleInventoryNavRight();
+    public void handleInventoryNavLeft();
 }

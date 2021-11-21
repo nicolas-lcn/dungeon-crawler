@@ -93,6 +93,12 @@ public class GameView implements View{
         ComponentImage.setImage(image.getImage());
     }
 
+    @Override
+    public void setUIText(String text) {
+        GamestateViewer.clear();
+        GamestateViewer.appendText(text);
+    }
+
     public void animateTurningRight(){
 
         //Creating Translate Transition

@@ -40,7 +40,6 @@ public class KeyBoardController {
     }
 
     public void handle(KeyEvent event){
-
         switch (event.getCode()) {
             case Z:  controller.goForward(); break;
             case Q:  controller.handleRotation(Direction.West); break;
@@ -50,6 +49,8 @@ public class KeyBoardController {
             case ESCAPE: controller.quitGame();break;
             case G: controller.startGame();break;
             case E: controller.handleUseItem(); break;
+            case J: controller.handleInventoryNavLeft();
+            case L: controller.handleInventoryNavRight();
         }
 
     }
