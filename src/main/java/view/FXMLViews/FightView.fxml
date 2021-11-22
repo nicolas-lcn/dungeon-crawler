@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="MainView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FightView">
+    <children>
+        <ImageView fx:id="RoomViewer" fitHeight="1080.0" fitWidth="1926.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/FightScene.png" />
+            </image>
+        </ImageView>
+      <AnchorPane fx:id="PlayerAnchor" layoutX="300.0" layoutY="215.0" prefHeight="325.0" prefWidth="262.0">
+         <children>
+            <ImageView fx:id="PlayerImage" fitHeight="325.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/playerAttack.gif" />
+                </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="EnemyAnchor" layoutX="1290.0" layoutY="215.0" prefHeight="339.0" prefWidth="274.0">
+         <children>
+            <ImageView fx:id="EnemyImage" fitHeight="339.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" >
+                <image>
+                    <Image url="@../assets/demon-attack.gif" />
+                </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

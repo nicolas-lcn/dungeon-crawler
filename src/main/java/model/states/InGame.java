@@ -52,7 +52,11 @@ public class InGame extends State {
         System.out.println("Le combat commence ! ");
         State state = new FightState();
         gameState.setState(state);
-        sceneController.switchFightScreen();
+        try {
+            sceneController.switchFightScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         state.setGameState(gameState);
 
     }

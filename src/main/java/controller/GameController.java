@@ -9,7 +9,7 @@ import model.places.Dungeon;
 import view.View;
 
 public interface GameController {
-    public void handleInventory(boolean isOpened);
+    public void handleInventory();
     public void startGame();
     public void quitGame();
     public void handleUseItem();
@@ -24,4 +24,7 @@ public interface GameController {
     public void goForward();
     public void handleInventoryNavRight();
     public void handleInventoryNavLeft();
+    void handleRight();
+    void handleLeft();
+    void handleFight(boolean hasStarted);
 }

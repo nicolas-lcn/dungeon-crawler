@@ -34,7 +34,7 @@ public class Monster implements Component {
     }
 
     public ImageView getImageView() {
-        return new ImageView( new Image(new File("src/main/java/view/assets/skeleton.png").toURI().toString()));
+        return new ImageView( new Image(new File("src/main/java/view/assets/demon-idle.gif").toURI().toString()));
     }
 
     @Override

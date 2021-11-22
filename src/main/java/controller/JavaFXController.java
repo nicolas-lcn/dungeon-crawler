@@ -3,13 +3,9 @@ package controller;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import model.Direction;
-import model.GameState;
-import model.Move;
-import model.Player;
+import model.*;
 import model.generators.ComponentGenerator;
 import model.places.Dungeon;
-import model.places.Room;
 import model.places.SimpleDungeon;
 import view.View;
 
@@ -21,6 +17,7 @@ public class JavaFXController implements GameController{
     Player player;
     Dungeon dungeon;
     ComponentGenerator componentGenerator;
+    boolean isInventoryOpened;
 
     public JavaFXController(Player player){
         this.player = player;
@@ -61,7 +58,15 @@ public class JavaFXController implements GameController{
     }
 
     @Override
-    public void handleInventory(boolean isOpened) {
+    public void handleInventory() {
+        if(isInventoryOpened){
+            isInventoryOpened = false;
+            view.closeInventory();
+        }
+        else{
+            isInventoryOpened = true;
+            view.openInventory();
+        }
     }
 
     @Override
@@ -77,7 +82,9 @@ public class JavaFXController implements GameController{
 
     @Override
     public void handleUseItem() {
-
+        Inventory inventory = player.getInventory();
+        inventory.useItem(inventory.getItem(inventory.getSelectedItemIndex()));
+        if(inventory.getEquippedItem()!=null) view.setEquippedItemVisible();
     }
 
     @Override
@@ -103,7 +110,6 @@ public class JavaFXController implements GameController{
         }
         if(dungeon.getCurrentFloor().getCurrentRoom().possibleDirections().contains(direction))
             System.out.println("porte devant");
-            //view.setRoomComponentImage();
         player.look(Direction.values()[playerLookingDirection]);
     }
 
@@ -111,15 +117,41 @@ public class JavaFXController implements GameController{
     public void goForward() {
         MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
         view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
+        view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
     }
 
     @Override
     public void handleInventoryNavRight() {
-
+        Inventory inventory = player.getInventory();
+        view.inventoryNavRight();
+        inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()+1);
     }
 
     @Override
     public void handleInventoryNavLeft() {
+        Inventory inventory = player.getInventory();
+        view.inventoryNavLeft();
+        inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()-1);
+    }
+
+    @Override
+    public void handleRight() {
+        if(isInventoryOpened) handleInventoryNavRight();
+        else handleRotation(Direction.East);
+    }
+
+    @Override
+    public void handleLeft() {
+        if(isInventoryOpened) handleInventoryNavLeft();
+        else handleRotation(Direction.West);
+    }
+
+    @Override
+    public void handleFight(boolean hasStarted) {
+        if(hasStarted) view.stopFight();
+        else{
+            view.beginFight();
+        }
 
     }
 

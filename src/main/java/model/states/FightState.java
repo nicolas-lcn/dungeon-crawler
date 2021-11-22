@@ -3,6 +3,8 @@ package model.states;
 import model.Direction;
 import model.Item;
 
+import java.io.IOException;
+
 public class FightState extends State{
     @Override
     public void openInventory() {}
@@ -26,11 +28,16 @@ public class FightState extends State{
     public void startFight() {}
 
     @Override
-    public void endFight() {
+    public void endFight(){
         System.out.println("Retour au jeu...");
         State state = new InGame();
         gameState.setState(state);
         state.setGameState(gameState);
+        try {
+            sceneController.stopFight();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

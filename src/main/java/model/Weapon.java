@@ -14,6 +14,7 @@ public class Weapon extends Item{
         super(name);
         this.strength = strength;
         image = new ImageView(new Image(new File("src/main/java/view/assets/sword.png").toURI().toString()));
+        isWearable = true;
     }
 
     @Override

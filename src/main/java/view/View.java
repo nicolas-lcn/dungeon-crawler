@@ -16,4 +16,8 @@ public interface View {
     public void turnLeft();
     public void setRoomComponentImage(ImageView image);
     public void setUIText(String text);
+    void inventoryNavLeft();
+    void inventoryNavRight();
+    void setEquippedItemVisible();
+    void setNumberOfPotions(String numberOfPotions);
 }

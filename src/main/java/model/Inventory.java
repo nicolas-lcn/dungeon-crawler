@@ -11,10 +11,13 @@ public class Inventory {
 
     private final Character possessor;
 
+    private int selectedItemIndex;
+
     public Inventory(Character possessor) {
         items = new HashMap<>();
         equippedItem = null;
         this.possessor = possessor;
+        selectedItemIndex = 0;
     }
 
     public void addItem(Item item){
@@ -25,7 +28,8 @@ public class Inventory {
 
     public void useItem(Item item){
         if(items.containsKey(item)){
-            item.applyEffect(possessor);
+            if(item.isWearable) equip(item);
+            else item.applyEffect(possessor);
         }
     }
 
@@ -39,7 +43,16 @@ public class Inventory {
 
     public void equip(Item item){
         equippedItem = item;
-        useItem(equippedItem);
+        item.applyEffect(possessor);
+    }
+
+    public Item getItem(int index){
+        int i = 0;
+        for(Item item : items.keySet()){
+            if(i == index) return item;
+            i++;
+        }
+        return null;
     }
 
     public int getNumber(Item item){
@@ -48,5 +61,19 @@ public class Inventory {
 
     public String toString(){
         return items.toString();
+    }
+
+    public int getSelectedItemIndex() {
+        return selectedItemIndex;
+    }
+
+    public void setSelectedItemIndex(int selectedItemIndex) {
+        if(selectedItemIndex>items.keySet().size()) this.selectedItemIndex = 0;
+        else if(selectedItemIndex<0) this.selectedItemIndex = items.keySet().size()-1;
+        else this.selectedItemIndex = selectedItemIndex;
+    }
+
+    public Item getEquippedItem() {
+        return equippedItem;
     }
 }

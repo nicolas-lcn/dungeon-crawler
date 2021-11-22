@@ -29,10 +29,10 @@ public class KeyBoardController {
                     controller.handleRotation(Direction.West);
                     break;
                 case "i":
-                    controller.handleInventory(false);
+                    controller.handleInventory();
                     break;
                 case "k":
-                    controller.handleInventory(true);
+                    controller.handleInventory();
                     break;
             }
 
@@ -42,15 +42,12 @@ public class KeyBoardController {
     public void handle(KeyEvent event){
         switch (event.getCode()) {
             case Z:  controller.goForward(); break;
-            case Q:  controller.handleRotation(Direction.West); break;
-            case D:  controller.handleRotation(Direction.East); break;
-            case I: controller.handleInventory(false);break;
-            case K: controller.handleInventory(true);break;
+            case Q:  controller.handleLeft(); break;
+            case D:  controller.handleRight(); break;
+            case I: controller.handleInventory();break;
             case ESCAPE: controller.quitGame();break;
             case G: controller.startGame();break;
             case E: controller.handleUseItem(); break;
-            case J: controller.handleInventoryNavLeft();
-            case L: controller.handleInventoryNavRight();
         }
 
     }

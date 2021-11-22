@@ -15,6 +15,7 @@ public class CLIController implements GameController{
     GameState gameState;
     Player player;
     Dungeon dungeon;
+    boolean isOpened;
 
     public CLIController(Player player, Dungeon dungeon) {
         this.gameState = GameState.getInstance();
@@ -37,10 +38,10 @@ public class CLIController implements GameController{
                 handleMovement(Direction.West);
                 break;
             case 'I':
-                handleInventory(false);
+                handleInventory();
                 break;
             case 'K':
-                handleInventory(true);
+                handleInventory();
                 break;
             case 'G':
                 gameState.resumeGame();
@@ -83,7 +84,7 @@ public class CLIController implements GameController{
         }
     }
 
-    public void handleInventory(boolean isOpened){
+    public void handleInventory(){
         if(isOpened) gameState.closeInventory();
         else {
             gameState.openInventory();
@@ -158,6 +159,21 @@ public class CLIController implements GameController{
 
     @Override
     public void handleInventoryNavLeft() {
+
+    }
+
+    @Override
+    public void handleRight() {
+
+    }
+
+    @Override
+    public void handleLeft() {
+
+    }
+
+    @Override
+    public void handleFight(boolean hasStarted) {
 
     }
 

@@ -14,6 +14,7 @@ public class Potion extends Item{
         super(name);
         this.vitality = vitality;
         image = new ImageView(new Image(new File("src/main/java/view/assets/potionGreen.png").toURI().toString()));
+        isWearable = false;
     }
 
     @Override

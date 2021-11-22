@@ -1,15 +1,15 @@
 package view;
 
+import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.GameState;
-
-import java.io.File;
 
 public class GameView implements View{
 
@@ -23,17 +23,14 @@ public class GameView implements View{
     public AnchorPane PotionAnchor;
     public ImageView PotionImage;
     public ProgressBar HPBar;
-    public TextArea GamestateViewer;
-    public TextField NumberOfWeapon;
-    public TextField NumberOfPotions;
-    public TextField StrengthViewer;
-    public Button East;
-    public Button West;
-    public Button South;
-    public Button North;
-    public MenuItem QuitButton;
+    public Text NumberOfPotions;
+    public Text StrengthViewer;
     public final GameState gameState = GameState.getInstance();
-    boolean isAnimationFinished;
+    public Text GameStateViewer;
+    public Rectangle potionSelector;
+    public Rectangle weaponSelector;
+    public ImageView isWeaponEquipped;
+    int selected;
 
 
     @Override
@@ -53,12 +50,15 @@ public class GameView implements View{
 
     @Override
     public void openInventory() {
-
+        selected = 0;
+        weaponSelector.setVisible(true);
+        potionSelector.setVisible(false);
     }
 
     @Override
     public void closeInventory() {
-
+        weaponSelector.setVisible(false);
+        potionSelector.setVisible(false);
     }
 
     @Override
@@ -95,12 +95,47 @@ public class GameView implements View{
 
     @Override
     public void setUIText(String text) {
-        GamestateViewer.clear();
-        GamestateViewer.appendText(text);
+        GameStateViewer.setText(text);
     }
 
-    public void animateTurningRight(){
+    @Override
+    public void inventoryNavLeft() {
+        if(selected == 0){
+            selected = 1;
+            weaponSelector.setVisible(false);
+            potionSelector.setVisible(true);
+        }else{
+            selected = 0;
+            weaponSelector.setVisible(true);
+            potionSelector.setVisible(false);
+        }
+    }
 
+    @Override
+    public void inventoryNavRight() {
+        if(selected == 0){
+            selected = 1;
+            weaponSelector.setVisible(false);
+            potionSelector.setVisible(true);
+        }else{
+            selected = 0;
+            weaponSelector.setVisible(true);
+            potionSelector.setVisible(false);
+        }
+    }
+
+    @Override
+    public void setEquippedItemVisible() {
+        isWeaponEquipped.setVisible(true);
+    }
+
+    @Override
+    public void setNumberOfPotions(String numberOfPotions) {
+        NumberOfPotions.setText(numberOfPotions);
+    }
+
+
+    public void animateTurningRight(){
         //Creating Translate Transition
         TranslateTransition translateTransitionLeftToCenter = new TranslateTransition();
 
@@ -108,10 +143,10 @@ public class GameView implements View{
         translateTransitionLeftToCenter.setDuration(Duration.millis(1000));
 
         //Setting the node for the transition
-        translateTransitionLeftToCenter.setNode(RoomViewer);
+        translateTransitionLeftToCenter.setNode(GameVisualisation);
 
         //Setting the value of the transition along the x axis.
-        translateTransitionLeftToCenter.setFromX(736);
+        translateTransitionLeftToCenter.setFromX(661);
         translateTransitionLeftToCenter.setToX(0);
 
         //Setting the cycle count for the transition
@@ -127,11 +162,11 @@ public class GameView implements View{
         translateTransitionCenterToRight.setDuration(Duration.millis(1000));
 
         //Setting the node for the transition
-        translateTransitionCenterToRight.setNode(RoomViewer);
+        translateTransitionCenterToRight.setNode(GameVisualisation);
 
         //Setting the value of the transition along the x axis.
         translateTransitionCenterToRight.setFromX(0);
-        translateTransitionCenterToRight.setToX(-736);
+        translateTransitionCenterToRight.setToX(-841);
 
         //Setting the cycle count for the transition
         translateTransitionCenterToRight.setCycleCount(1);
@@ -154,11 +189,11 @@ public class GameView implements View{
         translateTransitionCenterToLeft.setDuration(Duration.millis(1000));
 
         //Setting the node for the transition
-        translateTransitionCenterToLeft.setNode(RoomViewer);
+        translateTransitionCenterToLeft.setNode(GameVisualisation);
 
         //Setting the value of the transition along the x axis.
         translateTransitionCenterToLeft.setFromX(0);
-        translateTransitionCenterToLeft.setToX(736);
+        translateTransitionCenterToLeft.setToX(661);
 
         //Setting the cycle count for the transition
         translateTransitionCenterToLeft.setCycleCount(1);
@@ -173,10 +208,10 @@ public class GameView implements View{
         translateTransitionRightToCenter.setDuration(Duration.millis(1000));
 
         //Setting the node for the transition
-        translateTransitionRightToCenter.setNode(RoomViewer);
+        translateTransitionRightToCenter.setNode(GameVisualisation);
 
         //Setting the value of the transition along the x axis.
-        translateTransitionRightToCenter.setFromX(-736);
+        translateTransitionRightToCenter.setFromX(-841);
         translateTransitionRightToCenter.setToX(0);
 
         //Setting the cycle count for the transition

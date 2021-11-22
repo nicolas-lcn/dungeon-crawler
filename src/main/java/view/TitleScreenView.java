@@ -68,4 +68,25 @@ public class TitleScreenView implements View{
 
     }
 
+    @Override
+    public void inventoryNavLeft() {
+
+    }
+
+    @Override
+    public void inventoryNavRight() {
+
+    }
+
+    @Override
+    public void setEquippedItemVisible() {
+
+    }
+
+    @Override
+    public void setNumberOfPotions(String numberOfPotions) {
+
+    }
+
+
 }
