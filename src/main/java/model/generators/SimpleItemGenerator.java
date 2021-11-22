@@ -21,4 +21,11 @@ public class SimpleItemGenerator extends ItemGenerator{
     public Item generate() {
         return possibleItems.get(RandomController.randomInt(possibleItems.size()));
     }
+
+    @Override
+    public void reset() {
+        possibleItems = new ArrayList<>();
+        possibleItems.add(new Weapon("Sword of the Hero", 2));
+        possibleItems.add(new Potion("Vitality Potion", 4));
+    }
 }

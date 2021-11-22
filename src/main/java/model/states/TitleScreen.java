@@ -1,7 +1,7 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
-import model.GameState;
 import model.Item;
 
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class TitleScreen extends State {
     }
 
     @Override
-    public void startFight() {}
+    public void startFight(Character enemyFighter) {}
 
     @Override
     public void endFight() {}

@@ -52,6 +52,15 @@
                         <Image url="@../assets/full-room.png" />
                      </image>
                   </ImageView>
+                  <AnchorPane fx:id="DoorAnchor" layoutX="265.0" layoutY="200.0" prefHeight="382.0" prefWidth="209.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="254.0" fitWidth="241.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/door.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane id="ComponentViewer" fx:id="ComponentViewer" layoutX="280.0" layoutY="299.0" prefHeight="373.0" prefWidth="200.0">
                      <children>
                         <ImageView id="ComponentImage" fx:id="ComponentImage" fitHeight="374.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="false" />

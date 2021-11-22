@@ -20,4 +20,9 @@ public interface View {
     void inventoryNavRight();
     void setEquippedItemVisible();
     void setNumberOfPotions(String numberOfPotions);
+    void playerAttack();
+    void enemyAttack();
+    void waitToClear(int millis);
+    void waitToShow(int millis, boolean hasToShow);
+
 }

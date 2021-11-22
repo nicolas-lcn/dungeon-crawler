@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Character;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,18 +55,18 @@ public class FXSceneController {
         gameController.setView(fxmlLoader.getController());
     }
 
-    public void switchFightScreen() throws IOException {
+    public void switchFightScreen(Character enemyFighter) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("src/main/java/view/FXMLViews/FightView.fxml").toURI().toURL());
         Parent fightScreen = fxmlLoader.load();
         Scene scene = new Scene(fightScreen);
         scene.setOnKeyPressed(gameController.getEventHandler());
         primaryStage.setScene(scene);
         gameController.setView(fxmlLoader.getController());
-        gameController.handleFight(false);
+        gameController.handleFight(false, enemyFighter);
     }
 
     public void stopFight() throws IOException {
-        gameController.handleFight(true);
+        gameController.handleFight(true, null);
         switchInGame();
     }
 }

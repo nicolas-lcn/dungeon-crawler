@@ -1,8 +1,8 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
 import model.Item;
-import model.states.State;
 
 public class GamePaused extends State {
     @Override
@@ -32,7 +32,7 @@ public class GamePaused extends State {
     }
 
     @Override
-    public void startFight() {}
+    public void startFight(Character enemyFighter) {}
 
     @Override
     public void endFight() {}

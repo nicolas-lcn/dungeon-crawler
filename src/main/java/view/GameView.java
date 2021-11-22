@@ -1,8 +1,8 @@
 package view;
 
-import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +30,7 @@ public class GameView implements View{
     public Rectangle potionSelector;
     public Rectangle weaponSelector;
     public ImageView isWeaponEquipped;
+    public AnchorPane DoorAnchor;
     int selected;
 
 
@@ -132,6 +133,53 @@ public class GameView implements View{
     @Override
     public void setNumberOfPotions(String numberOfPotions) {
         NumberOfPotions.setText(numberOfPotions);
+    }
+
+    @Override
+    public void playerAttack() {
+
+    }
+
+    @Override
+    public void enemyAttack() {
+
+    }
+
+    @Override
+    public void waitToClear(int millis) {
+        Timeline waitAnimation = new Timeline(new KeyFrame(Duration.millis(millis)));
+        waitAnimation.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                clearRoomComponentImage();
+            }
+        });
+        waitAnimation.play();
+    }
+
+    @Override
+    public void waitToShow(int millis, boolean hasToShow) {
+        Timeline waitAnimation = new Timeline(new KeyFrame(Duration.millis(millis)));
+        waitAnimation.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(hasToShow) showDoor();
+                else hideDoor();
+            }
+        });
+        waitAnimation.play();
+    }
+
+    public void clearRoomComponentImage() {
+        ComponentImage.setImage(null);
+    }
+
+    public void showDoor() {
+        DoorAnchor.setVisible(true);
+    }
+
+    public void hideDoor() {
+        DoorAnchor.setVisible(false);
     }
 
 

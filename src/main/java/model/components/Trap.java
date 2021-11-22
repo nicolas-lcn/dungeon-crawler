@@ -2,6 +2,7 @@ package model.components;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Character;
 import model.Player;
 import model.components.Component;
 
@@ -28,5 +29,10 @@ public class Trap implements Component {
     @Override
     public String getInteractAlert() {
         return "IT'S A TRAP !";
+    }
+
+    @Override
+    public Character getAvatar() {
+        return null;
     }
 }

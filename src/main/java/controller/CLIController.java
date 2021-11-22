@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import model.Character;
 import model.Direction;
 import model.GameState;
 import model.Move;
@@ -173,7 +174,12 @@ public class CLIController implements GameController{
     }
 
     @Override
-    public void handleFight(boolean hasStarted) {
+    public void handleFight(boolean hasStarted, Character enemyFighter) {
+
+    }
+
+    @Override
+    public void handleAttack() {
 
     }
 

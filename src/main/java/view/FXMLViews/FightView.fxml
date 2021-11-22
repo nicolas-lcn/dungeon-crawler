@@ -20,9 +20,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="EnemyAnchor" layoutX="1290.0" layoutY="215.0" prefHeight="339.0" prefWidth="274.0">
+      <AnchorPane fx:id="EnemyAnchor" layoutX="1068.0" layoutY="125.0" prefHeight="584.0" prefWidth="660.0">
          <children>
-            <ImageView fx:id="EnemyImage" fitHeight="339.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" >
+            <ImageView fx:id="EnemyImage" fitHeight="667.0" fitWidth="767.0" layoutX="-107.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../assets/demon-attack.gif" />
                 </image>

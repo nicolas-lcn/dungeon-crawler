@@ -1,5 +1,6 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
 import model.Item;
 
@@ -31,7 +32,7 @@ public class InventoryState extends State {
     }
 
     @Override
-    public void startFight() {}
+    public void startFight(Character enemyFighter) {}
 
     @Override
     public void endFight() {}

@@ -1,6 +1,7 @@
 package model.states;
 
 import controller.FXSceneController;
+import model.Character;
 import model.Direction;
 import model.GameState;
 import model.Item;
@@ -19,7 +20,7 @@ public abstract class State {
     public abstract void titleScreen();
     public abstract void pauseGame();
     public abstract void resumeGame();
-    public abstract void startFight();
+    public abstract void startFight(Character enemyFighter);
     public abstract void endFight();
     public abstract void handleUseItem(Item item);
     public abstract void handleMovement(Direction direction);

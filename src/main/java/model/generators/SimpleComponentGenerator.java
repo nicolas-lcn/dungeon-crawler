@@ -14,10 +14,14 @@ import java.util.ArrayList;
 public class SimpleComponentGenerator extends ComponentGenerator{
 
     public ArrayList<Component> possibleComponents;
+    ItemGenerator itemGenerator;
+    GameState gameState;
 
     public SimpleComponentGenerator(ItemGenerator itemGenerator, GameState gameState){
+        this.itemGenerator = itemGenerator;
+        this.gameState = gameState;
         possibleComponents = new ArrayList<>();
-        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), new BasicFightCreator(gameState), gameState));
+        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), gameState));
         possibleComponents.add(new Chest(itemGenerator.generate()));
         possibleComponents.add(new Trap(4));
     }
@@ -25,6 +29,16 @@ public class SimpleComponentGenerator extends ComponentGenerator{
     @Override
     public Component generate() {
         int chosenComponentIndex = RandomController.randomInt(possibleComponents.size());
-        return possibleComponents.get(chosenComponentIndex);
+        Component chosen = possibleComponents.get(chosenComponentIndex);
+        reset();
+        return chosen;
+    }
+
+    @Override
+    public void reset() {
+        possibleComponents = new ArrayList<>();
+        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), gameState));
+        possibleComponents.add(new Chest(itemGenerator.generate()));
+        possibleComponents.add(new Trap(4));
     }
 }

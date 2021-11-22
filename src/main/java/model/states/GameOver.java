@@ -1,8 +1,8 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
 import model.Item;
-import model.states.State;
 
 public class GameOver extends State {
     @Override
@@ -28,7 +28,7 @@ public class GameOver extends State {
     public void resumeGame() {}
 
     @Override
-    public void startFight() {}
+    public void startFight(Character enemyFighter) {}
 
     @Override
     public void endFight() {}

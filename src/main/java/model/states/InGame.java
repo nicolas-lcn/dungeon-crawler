@@ -1,8 +1,8 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
 import model.Item;
-import model.states.State;
 
 import java.io.IOException;
 
@@ -48,12 +48,12 @@ public class InGame extends State {
     public void resumeGame() {}
 
     @Override
-    public void startFight() {
+    public void startFight(Character enemyFighter) {
         System.out.println("Le combat commence ! ");
         State state = new FightState();
         gameState.setState(state);
         try {
-            sceneController.switchFightScreen();
+            sceneController.switchFightScreen(enemyFighter);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -88,7 +88,25 @@ public class GameOverView implements View{
 
     }
 
+    @Override
+    public void playerAttack() {
 
+    }
+
+    @Override
+    public void enemyAttack() {
+
+    }
+
+    @Override
+    public void waitToClear(int millis) {
+
+    }
+
+    @Override
+    public void waitToShow(int millis, boolean hasToShow) {
+
+    }
 
 
 }

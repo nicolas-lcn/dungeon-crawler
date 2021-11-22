@@ -1,5 +1,6 @@
 package model.states;
 
+import model.Character;
 import model.Direction;
 import model.Item;
 
@@ -25,7 +26,7 @@ public class FightState extends State{
     public void resumeGame() {}
 
     @Override
-    public void startFight() {}
+    public void startFight(Character enemyFighter) {}
 
     @Override
     public void endFight(){

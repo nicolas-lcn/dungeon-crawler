@@ -1,6 +1,7 @@
 package model.components;
 
 import javafx.scene.image.ImageView;
+import model.Character;
 import model.Item;
 import model.Player;
 import model.components.Component;
@@ -25,5 +26,10 @@ public class Chest implements Component {
     @Override
     public String getInteractAlert() {
         return "You found : " + item.getName() + " !";
+    }
+
+    @Override
+    public Character getAvatar() {
+        return null;
     }
 }

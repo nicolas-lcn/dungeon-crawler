@@ -3,6 +3,8 @@ package view;
 import javafx.animation.Animation;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -43,12 +45,12 @@ public class FightView implements View{
 
     @Override
     public void beginFight() {
-        startAllAnimations();
+
     }
 
     @Override
     public void stopFight() {
-        seqT.stop();
+
     }
 
     @Override
@@ -101,7 +103,8 @@ public class FightView implements View{
 
     }
 
-    void startAllAnimations(){
+    @Override
+    public void playerAttack() {
         //Creating Translate Transition
         TranslateTransition playerAttack = new TranslateTransition();
 
@@ -113,14 +116,26 @@ public class FightView implements View{
 
         //Setting the value of the transition along the x axis.
         playerAttack.setFromX(0);
-        playerAttack.setToX(1100);
+        playerAttack.setToX(1050);
 
         //Setting the cycle count for the transition
-        playerAttack.setCycleCount(1);
+        playerAttack.setCycleCount(2);
 
         //Setting auto reverse value to false
         playerAttack.setAutoReverse(true);
 
+        playerAttack.play();
+
+        playerAttack.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                enemyAttack();
+            }
+        });
+    }
+
+    @Override
+    public void enemyAttack() {
         //Creating Translate Transition
         TranslateTransition enemyAttack = new TranslateTransition();
 
@@ -132,16 +147,26 @@ public class FightView implements View{
 
         //Setting the value of the transition along the x axis.
         enemyAttack.setFromX(0);
-        enemyAttack.setToX(500);
+        enemyAttack.setToX(-580);
 
         //Setting the cycle count for the transition
-        enemyAttack.setCycleCount(1);
+        enemyAttack.setCycleCount(2);
 
         //Setting auto reverse value to false
         enemyAttack.setAutoReverse(true);
 
-        seqT = new SequentialTransition(playerAttack, enemyAttack);
-        seqT.setCycleCount(Animation.INDEFINITE);
-        seqT.play();
+        enemyAttack.play();
     }
+
+    @Override
+    public void waitToClear(int millis) {
+
+    }
+
+    @Override
+    public void waitToShow(int millis, boolean hasToShow) {
+
+    }
+
+
 }

@@ -47,8 +47,8 @@ public class GameState {
         state.resumeGame();
     }
 
-    public void startFight() {
-        state.startFight();
+    public void startFight(Character enemyFighter) {
+        state.startFight(enemyFighter);
     }
 
     public void endFight() {
