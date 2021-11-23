@@ -10,6 +10,8 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.GameState;
 
+import java.util.ArrayList;
+
 public class GameView implements View{
 
     public AnchorPane GameVisualisation;
@@ -27,6 +29,10 @@ public class GameView implements View{
     public ImageView FirstItemImage;
     public AnchorPane SecondItemAnchor;
     public ImageView SecondItemImage;
+    public Text FirstItemNumber;
+    public ImageView FirstEquippedIcon;
+    public Text SecondItemNumber;
+    public ImageView SecondEquippedIcon;
 
 
     int selected;
@@ -125,12 +131,22 @@ public class GameView implements View{
     }
 
     @Override
-    public void setEquippedItemVisible() {
+    public void setEquippedItemVisible(int index) {
+        if(index==0) FirstEquippedIcon.setVisible(true);
+        if(index==1) SecondEquippedIcon.setVisible(true);
     }
 
     @Override
-    public void setNumberOfPotions(String numberOfPotions) {
+    public void setNumberOfItems(ArrayList<Integer> itemsNumbers) {
+        FirstItemNumber.setText(String.valueOf(itemsNumbers.get(0)));
+        if(itemsNumbers.size()>=2)
+            SecondItemNumber.setText(String.valueOf(itemsNumbers.get(1)));
+    }
 
+    @Override
+    public void setNumberVisible(int index) {
+        if(index==0) FirstItemNumber.setVisible(true);
+        if(index==1) SecondItemNumber.setVisible(true);
     }
 
     @Override

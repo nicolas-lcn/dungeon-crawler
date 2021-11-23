@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 public class FightView implements View{
     public AnchorPane MainView;
     public ImageView RoomViewer;
@@ -96,12 +98,17 @@ public class FightView implements View{
     }
 
     @Override
-    public void setEquippedItemVisible() {
+    public void setEquippedItemVisible(int index) {
 
     }
 
     @Override
-    public void setNumberOfPotions(String numberOfPotions) {
+    public void setNumberOfItems(ArrayList<Integer> itemsNumbers) {
+
+    }
+
+    @Override
+    public void setNumberVisible(int index) {
 
     }
 

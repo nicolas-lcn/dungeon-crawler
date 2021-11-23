@@ -14,12 +14,21 @@ public class Potion extends Item{
         super(name);
         this.vitality = vitality;
         image = new ImageView(new Image(new File("src/main/java/view/assets/potionGreen.png").toURI().toString()));
-        isWearable = false;
     }
 
     @Override
     public void applyEffect(Character target) {
         target.setVitality(target.getVitality() + vitality);
+    }
+
+    @Override
+    public boolean isWearable() {
+        return false;
+    }
+
+    @Override
+    public boolean isStackable() {
+        return true;
     }
 
     public boolean equals(Object o){

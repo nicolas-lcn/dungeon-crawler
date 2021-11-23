@@ -87,13 +87,29 @@
             <AnchorPane fx:id="FirstItemAnchor" layoutX="495.0" layoutY="128.0" prefHeight="142.0" prefWidth="142.0">
                <children>
                   <ImageView fx:id="FirstItemImage" fitHeight="142.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
-                  <Rectangle fx:id="firstItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" visible="false"/>
+                  <Rectangle fx:id="firstItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="145.0" />
+                  <Text fx:id="FirstItemNumber" fill="#b9b8b8" layoutX="120.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="21.13671875" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="FirstEquippedIcon" fitHeight="43.0" fitWidth="43.0" layoutX="99.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <Image url="@../assets/checkbox_check.png"/>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="SecondItemAnchor" layoutX="736.0" layoutY="128.0" prefHeight="142.0" prefWidth="142.0">
                <children>
                   <ImageView fx:id="SecondItemImage" fitHeight="142.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
-                  <Rectangle fx:id="secondItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" visible="false"/>
+                  <Rectangle fx:id="secondItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="145.0" />
+                  <Text fx:id="SecondItemNumber" fill="#b9b8b8" layoutX="120.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="21.13671875" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="SecondEquippedIcon" fitHeight="43.0" fitWidth="43.0" layoutX="99.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <Image url="@../assets/checkbox_check.png"/>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

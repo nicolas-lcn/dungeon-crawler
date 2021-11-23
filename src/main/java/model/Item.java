@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 public abstract class Item{
     private String name;
     ImageView image;
-    boolean isWearable;
 
     public Item(String name) {
         this.name = name;
@@ -22,4 +21,8 @@ public abstract class Item{
     public ImageView getImage() {
         return image;
     }
+
+    public abstract boolean isWearable();
+
+    public abstract boolean isStackable();
 }

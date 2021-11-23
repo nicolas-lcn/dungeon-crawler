@@ -14,12 +14,21 @@ public class Weapon extends Item{
         super(name);
         this.strength = strength;
         image = new ImageView(new Image(new File("src/main/java/view/assets/sword.png").toURI().toString()));
-        isWearable = true;
     }
 
     @Override
     public void applyEffect(Character target) {
         target.setStrength(target.getStrength() + strength);
+    }
+
+    @Override
+    public boolean isWearable() {
+        return true;
+    }
+
+    @Override
+    public boolean isStackable() {
+        return false;
     }
 
     public boolean equals(Object o){

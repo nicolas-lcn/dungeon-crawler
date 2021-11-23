@@ -32,7 +32,7 @@ public class Inventory {
 
     public void useItem(Item item){
         if(items.containsKey(item)){
-            if(item.isWearable) equip(item);
+            if(item.isWearable()) equip(item);
             else {
                 item.applyEffect(possessor);
                 removeItem(item);
@@ -87,5 +87,9 @@ public class Inventory {
 
     public boolean isEmpty(){
         return getSize()==0;
+    }
+
+    public HashMap<Item, Integer> getItems() {
+        return items;
     }
 }

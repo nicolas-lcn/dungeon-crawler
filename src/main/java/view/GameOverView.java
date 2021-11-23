@@ -2,6 +2,8 @@ package view;
 
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class GameOverView implements View{
     @Override
     public void startGame() {
@@ -79,12 +81,17 @@ public class GameOverView implements View{
     }
 
     @Override
-    public void setEquippedItemVisible() {
+    public void setEquippedItemVisible(int index) {
 
     }
 
     @Override
-    public void setNumberOfPotions(String numberOfPotions) {
+    public void setNumberOfItems(ArrayList<Integer> itemsNumbers) {
+
+    }
+
+    @Override
+    public void setNumberVisible(int index) {
 
     }
 

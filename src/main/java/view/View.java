@@ -2,6 +2,8 @@ package view;
 
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public interface View {
     public void startGame();
     public void gameOver();
@@ -18,8 +20,9 @@ public interface View {
     public void setUIText(String text);
     void inventoryNavLeft();
     void inventoryNavRight();
-    void setEquippedItemVisible();
-    void setNumberOfPotions(String numberOfPotions);
+    void setEquippedItemVisible(int index);
+    void setNumberOfItems(ArrayList<Integer> itemsNumbers);
+    void setNumberVisible(int index);
     void playerAttack();
     void enemyAttack();
     void waitToClear(int millis);

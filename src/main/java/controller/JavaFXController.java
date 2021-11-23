@@ -11,6 +11,8 @@ import model.places.Dungeon;
 import model.places.SimpleDungeon;
 import view.View;
 
+import java.util.ArrayList;
+
 public class JavaFXController implements GameController{
 
     GameState gameState;
@@ -100,7 +102,6 @@ public class JavaFXController implements GameController{
     public void handleUseItem() {
         Inventory inventory = player.getInventory();
         gameState.handleUseItem(inventory, inventory.getItem(inventory.getSelectedItemIndex()));
-        if(inventory.getEquippedItem()!=null) view.setEquippedItemVisible();
         handleAllPlayerPropertiesDisplay();
     }
 
@@ -229,9 +230,16 @@ public class JavaFXController implements GameController{
     }
 
     public void handleInventoryDisplay(){
-        if( ! player.getInventory().isEmpty()){
-            view.setFirstItemImage(player.getInventory().getItem(0).getImage());
-            if(player.getInventory().getSize()>1)view.setSecondItemImage(player.getInventory().getItem(1).getImage());
+        Inventory inventory = player.getInventory();
+        if( ! inventory.isEmpty()){
+            view.setFirstItemImage(inventory.getItem(0).getImage());
+            if(inventory.getSize()>1)
+                view.setSecondItemImage(inventory.getItem(1).getImage());
+            if(inventory.getItem(inventory.getSelectedItemIndex()).isWearable())
+                view.setEquippedItemVisible(inventory.getSelectedItemIndex());
+            view.setNumberOfItems(new ArrayList<>(inventory.getItems().values()));
+            if(inventory.getItem(inventory.getSelectedItemIndex()).isStackable())
+                view.setNumberVisible(inventory.getSelectedItemIndex());
         }
     }
 
