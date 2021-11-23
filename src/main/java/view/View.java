@@ -25,5 +25,7 @@ public interface View {
     void waitToClear(int millis);
     void waitToShow(int millis, boolean hasToShow);
     void updateHPBar(int remainingVitality, int maxVitality);
+    void setFirstItemImage(ImageView itemImage);
+    void setSecondItemImage(ImageView itemImage);
 
 }

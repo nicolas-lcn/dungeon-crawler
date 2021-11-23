@@ -113,5 +113,15 @@ public class GameOverView implements View{
 
     }
 
+    @Override
+    public void setFirstItemImage(ImageView itemImage) {
+
+    }
+
+    @Override
+    public void setSecondItemImage(ImageView itemImage) {
+
+    }
+
 
 }

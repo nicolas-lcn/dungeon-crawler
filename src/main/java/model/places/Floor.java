@@ -9,4 +9,5 @@ public interface Floor {
     public int getPlayerPositionY();
     public void addRoom(Direction direction,Player player);
     public Room getCurrentRoom();
+    public void addEmptyRoom(Direction direction, Player player);
 }

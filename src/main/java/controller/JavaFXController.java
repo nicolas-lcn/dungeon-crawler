@@ -85,7 +85,6 @@ public class JavaFXController implements GameController{
             initPlayerVitality = player.getAvatar().getVitality();
             gameState.resumeGame();
             this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
-            handleComponentDisplay();
             handleDoorDisplay();
             isGameStarted = true;
             handleHPBarDisplay();
@@ -140,7 +139,7 @@ public class JavaFXController implements GameController{
         hasShownComponent = playerPosition==newPlayerPosition;
         handleComponentDisplay();
         handleDoorDisplay();
-        handleHPBarDisplay();
+        handleAllPlayerPropertiesDisplay();
         if(player.getAvatar().getVitality()<=0) gameState.gameOver();
     }
 
@@ -195,6 +194,8 @@ public class JavaFXController implements GameController{
     @Override
     public void handleAllPlayerPropertiesDisplay() {
         handleHPBarDisplay();
+        handleStrengthDisplay();
+        handleInventoryDisplay();
     }
 
     public void handleHPBarDisplay() {
@@ -205,11 +206,23 @@ public class JavaFXController implements GameController{
         view.waitToShow(500, dungeon.getCurrentFloor().getCurrentRoom().possibleDirections().contains(player.getLookingDirection()));
     }
 
+    public void handleStrengthDisplay(){
+
+    }
+
     public void handleComponentDisplay(){
         if( ! hasShownComponent) {
             view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
             view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
             view.waitToClear(1000);
+        }
+    }
+
+    public void handleInventoryDisplay(){
+        System.out.println(player.getInventory().isEmpty());
+        if( ! player.getInventory().isEmpty()){
+            view.setFirstItemImage(player.getInventory().getItem(0).getImage());
+            if(player.getInventory().getSize()>1)view.setSecondItemImage(player.getInventory().getItem(1).getImage());
         }
     }
 

@@ -173,6 +173,16 @@ public class GameView implements View{
         HPBar.setWidth(remainingVitality*245/maxVitality);
     }
 
+    @Override
+    public void setFirstItemImage(ImageView itemImage) {
+        FirstItemImage.setImage(itemImage.getImage());
+    }
+
+    @Override
+    public void setSecondItemImage(ImageView itemImage) {
+        SecondItemImage.setImage(itemImage.getImage());
+    }
+
     public void clearRoomComponentImage() {
         ComponentImage.setImage(null);
     }

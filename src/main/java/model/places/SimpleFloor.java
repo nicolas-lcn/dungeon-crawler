@@ -22,7 +22,7 @@ public class SimpleFloor implements Floor {
         map = new ArrayList<>(MAX_ROOM_NUMBER);
         playerPositionX = 0;
         this.componentGenerator = componentGenerator;
-        addRoom(previousDirection, player);
+        addEmptyRoom(previousDirection, player);
     }
 
 
@@ -55,5 +55,11 @@ public class SimpleFloor implements Floor {
     @Override
     public Room getCurrentRoom() {
         return map.get(playerPositionX);
+    }
+
+    @Override
+    public void addEmptyRoom(Direction direction, Player player) {
+        SimpleRoom room = new SimpleRoom(null, RandomController.randomPortalNumber(), direction);
+        map.add(room);
     }
 }

@@ -87,13 +87,13 @@
             <AnchorPane fx:id="FirstItemAnchor" layoutX="495.0" layoutY="128.0" prefHeight="142.0" prefWidth="142.0">
                <children>
                   <ImageView fx:id="FirstItemImage" fitHeight="142.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
-                  <Rectangle fx:id="firstItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" />
+                  <Rectangle fx:id="firstItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" visible="false"/>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="SecondItemAnchor" layoutX="736.0" layoutY="128.0" prefHeight="142.0" prefWidth="142.0">
                <children>
                   <ImageView fx:id="SecondItemImage" fitHeight="142.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
-                  <Rectangle fx:id="secondItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" />
+                  <Rectangle fx:id="secondItemSelector" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="145.0" stroke="#fcda5c" strokeType="INSIDE" strokeWidth="3.0" width="145.0" visible="false"/>
                </children>
             </AnchorPane>
          </children>

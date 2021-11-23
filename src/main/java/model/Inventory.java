@@ -25,11 +25,18 @@ public class Inventory {
         else items.put(item, 1);
     }
 
+    public int getSize(){
+        return items.size();
+    }
+
 
     public void useItem(Item item){
         if(items.containsKey(item)){
             if(item.isWearable) equip(item);
-            else item.applyEffect(possessor);
+            else {
+                item.applyEffect(possessor);
+                removeItem(item);
+            }
         }
     }
 
@@ -38,7 +45,8 @@ public class Inventory {
     }
 
     public void removeItem(Item item){
-        items.put(item, items.get(item)-1);
+        if(items.get(item)-1>0)items.put(item, items.get(item)-1);
+        else items.remove(item);
     }
 
     public void equip(Item item){
@@ -75,5 +83,9 @@ public class Inventory {
 
     public Item getEquippedItem() {
         return equippedItem;
+    }
+
+    public boolean isEmpty(){
+        return getSize()==0;
     }
 }
