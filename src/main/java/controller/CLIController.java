@@ -183,4 +183,9 @@ public class CLIController implements GameController{
 
     }
 
+    @Override
+    public void handleAllPlayerPropertiesDisplay() {
+
+    }
+
 }

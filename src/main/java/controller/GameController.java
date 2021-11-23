@@ -29,4 +29,5 @@ public interface GameController {
     void handleLeft();
     void handleFight(boolean hasStarted, Character enemyFighter);
     void handleAttack();
+    void handleAllPlayerPropertiesDisplay();
 }

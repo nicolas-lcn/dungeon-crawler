@@ -35,6 +35,7 @@ public class FXSceneController {
         scene.setOnKeyPressed(gameController.getEventHandler());
         primaryStage.setScene(scene);
         gameController.setView(fxmlLoader.getController());
+        gameController.handleAllPlayerPropertiesDisplay();
     }
 
     public void switchGameOver() throws IOException {

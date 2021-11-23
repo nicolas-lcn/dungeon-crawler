@@ -68,20 +68,22 @@ public class JavaFXController implements GameController{
     public void handleInventory() {
         if(isInventoryOpened){
             isInventoryOpened = false;
+            gameState.closeInventory();
             view.closeInventory();
         }
         else{
             isInventoryOpened = true;
             view.openInventory();
+            gameState.openInventory();
         }
     }
 
     @Override
     public void startGame() {
         if(!isGameStarted) {
-            gameState.resumeGame();
             hasShownComponent = false;
             initPlayerVitality = player.getAvatar().getVitality();
+            gameState.resumeGame();
             this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
             handleComponentDisplay();
             handleDoorDisplay();
@@ -188,6 +190,11 @@ public class JavaFXController implements GameController{
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
+    }
+
+    @Override
+    public void handleAllPlayerPropertiesDisplay() {
+        handleHPBarDisplay();
     }
 
     public void handleHPBarDisplay() {
