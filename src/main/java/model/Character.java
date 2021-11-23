@@ -4,10 +4,12 @@ public class Character {
     protected int strength;
     protected int vitality;
     protected boolean turnToAttack;
+    protected final int initialVitality;
 
     public Character(int strength, int vitality) {
         this.strength = strength;
         this.vitality = vitality;
+        initialVitality = vitality;
     }
 
     public int getStrength() {
@@ -40,5 +42,9 @@ public class Character {
 
     public void setTurnToAttack(boolean turnToAttack) {
         this.turnToAttack = turnToAttack;
+    }
+
+    public int getInitialVitality() {
+        return initialVitality;
     }
 }

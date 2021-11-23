@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import model.*;
 import model.Character;
+import model.components.Component;
 import model.generators.ComponentGenerator;
 import model.places.Dungeon;
 import model.places.SimpleDungeon;
@@ -23,7 +24,6 @@ public class JavaFXController implements GameController{
     Fight fight;
     boolean hasShownComponent;
     boolean isGameStarted;
-    int initPlayerVitality;
 
     public JavaFXController(Player player){
         this.player = player;
@@ -82,7 +82,6 @@ public class JavaFXController implements GameController{
     public void startGame() {
         if(!isGameStarted) {
             hasShownComponent = false;
-            initPlayerVitality = player.getAvatar().getVitality();
             gameState.resumeGame();
             this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
             handleDoorDisplay();
@@ -190,8 +189,12 @@ public class JavaFXController implements GameController{
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
         else{
-            view.updateHPBar(player.getAvatar().getVitality(), initPlayerVitality);
-            view.updateMonsterHPBar(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getAvatar().getVitality(), 60);
+            Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
+            handleHPBarDisplay();
+            view.updateMonsterHPBar(
+                    enemy.getAvatar().getVitality(),
+                    enemy.getAvatar().getInitialVitality()
+            );
         }
     }
 
@@ -203,7 +206,10 @@ public class JavaFXController implements GameController{
     }
 
     public void handleHPBarDisplay() {
-        view.updateHPBar(player.getAvatar().getVitality(),initPlayerVitality);
+        view.updateHPBar(
+                player.getAvatar().getVitality(),
+                player.getAvatar().getInitialVitality()
+        );
     }
 
     public void handleDoorDisplay(){
