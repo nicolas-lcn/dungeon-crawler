@@ -24,5 +24,6 @@ public interface View {
     void enemyAttack();
     void waitToClear(int millis);
     void waitToShow(int millis, boolean hasToShow);
+    void updateHPBar(int remainingVitality, int maxVitality);
 
 }

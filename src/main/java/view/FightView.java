@@ -1,6 +1,5 @@
 package view;
 
-import javafx.animation.Animation;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -165,6 +164,11 @@ public class FightView implements View{
 
     @Override
     public void waitToShow(int millis, boolean hasToShow) {
+
+    }
+
+    @Override
+    public void updateHPBar(int remainingVitality, int maxVitality) {
 
     }
 

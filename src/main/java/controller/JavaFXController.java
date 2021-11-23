@@ -23,6 +23,7 @@ public class JavaFXController implements GameController{
     Fight fight;
     boolean hasShownComponent;
     boolean isGameStarted;
+    int initPlayerVitality;
 
     public JavaFXController(Player player){
         this.player = player;
@@ -80,10 +81,12 @@ public class JavaFXController implements GameController{
         if(!isGameStarted) {
             gameState.resumeGame();
             hasShownComponent = false;
+            initPlayerVitality = player.getAvatar().getVitality();
             this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
             handleComponentDisplay();
             handleDoorDisplay();
             isGameStarted = true;
+            handleHPBarDisplay();
         }
 
     }
@@ -98,6 +101,7 @@ public class JavaFXController implements GameController{
         Inventory inventory = player.getInventory();
         inventory.useItem(inventory.getItem(inventory.getSelectedItemIndex()));
         if(inventory.getEquippedItem()!=null) view.setEquippedItemVisible();
+        handleHPBarDisplay();
     }
 
     @Override
@@ -134,6 +138,7 @@ public class JavaFXController implements GameController{
         hasShownComponent = playerPosition==newPlayerPosition;
         handleComponentDisplay();
         handleDoorDisplay();
+        handleHPBarDisplay();
         if(player.getAvatar().getVitality()<=0) gameState.gameOver();
     }
 
@@ -183,6 +188,10 @@ public class JavaFXController implements GameController{
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
+    }
+
+    public void handleHPBarDisplay() {
+        view.updateHPBar(player.getAvatar().getVitality(),initPlayerVitality);
     }
 
     public void handleDoorDisplay(){

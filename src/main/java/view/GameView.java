@@ -3,7 +3,6 @@ package view;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -18,7 +17,7 @@ public class GameView implements View{
     public AnchorPane ComponentViewer;
     public ImageView ComponentImage;
     public ImageView MainUI;
-    public ProgressBar HPBar;
+    public Rectangle HPBar;
     public Text StrengthViewer;
     public Text GameStateViewer;
     public Rectangle secondItemSelector;
@@ -167,6 +166,11 @@ public class GameView implements View{
             }
         });
         waitAnimation.play();
+    }
+
+    @Override
+    public void updateHPBar(int remainingVitality, int maxVitality) {
+        HPBar.setWidth(remainingVitality*245/maxVitality);
     }
 
     public void clearRoomComponentImage() {
