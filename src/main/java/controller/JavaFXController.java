@@ -167,16 +167,12 @@ public class JavaFXController implements GameController{
     public void handleFight(boolean hasStarted, Character enemyFighter) {
         if(hasStarted){
             if(player.getAvatar().getVitality()<=0){
-                System.out.println("loose");
                 gameState.gameOver();
-            }
-            else{
-                view.stopFight();
-            }
+            }else gameState.resumeGame();
         }
         else{
             fight = fightCreator.createFight(player.getAvatar(), enemyFighter);
-            view.beginFight();
+
         }
 
     }

@@ -29,6 +29,7 @@ public class FXSceneController {
     }
 
     public void switchInGame() throws IOException {
+        System.out.println("return in game");
         FXMLLoader fxmlLoader = new FXMLLoader((new File("src/main/java/view/FXMLViews/GUIView.fxml").toURI().toURL()));
         Parent inGame = fxmlLoader.load();
         Scene scene = new Scene(inGame);
@@ -38,7 +39,7 @@ public class FXSceneController {
     }
 
     public void switchGameOver() throws IOException {
-        System.out.println("loose");
+        System.out.println("game over");
         FXMLLoader fxmlLoader = new FXMLLoader(new File("src/main/java/view/FXMLViews/GameOver.fxml").toURI().toURL());
         Parent gameOver = fxmlLoader.load();
         Scene scene = new Scene(gameOver);
@@ -68,6 +69,5 @@ public class FXSceneController {
 
     public void stopFight() throws IOException {
         gameController.handleFight(true, null);
-        switchInGame();
     }
 }
