@@ -183,6 +183,11 @@ public class GameView implements View{
         SecondItemImage.setImage(itemImage.getImage());
     }
 
+    @Override
+    public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+
+    }
+
     public void clearRoomComponentImage() {
         ComponentImage.setImage(null);
     }

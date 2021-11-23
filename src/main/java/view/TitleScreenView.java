@@ -123,5 +123,10 @@ public class TitleScreenView implements View{
 
     }
 
+    @Override
+    public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+
+    }
+
 
 }

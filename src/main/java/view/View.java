@@ -27,5 +27,6 @@ public interface View {
     void updateHPBar(int remainingVitality, int maxVitality);
     void setFirstItemImage(ImageView itemImage);
     void setSecondItemImage(ImageView itemImage);
+    void updateMonsterHPBar(int remainingVitality, int maxVitality);
 
 }

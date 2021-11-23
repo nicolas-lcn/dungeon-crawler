@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class FightView implements View{
@@ -15,6 +16,8 @@ public class FightView implements View{
     public ImageView PlayerImage;
     public AnchorPane EnemyAnchor;
     public ImageView EnemyImage;
+    public Rectangle HPBar;
+    public Rectangle HPBarMonster;
     SequentialTransition seqT;
 
     @Override
@@ -169,8 +172,9 @@ public class FightView implements View{
 
     @Override
     public void updateHPBar(int remainingVitality, int maxVitality) {
-
+        HPBar.setWidth(remainingVitality*245/maxVitality);
     }
+
 
     @Override
     public void setFirstItemImage(ImageView itemImage) {
@@ -180,6 +184,11 @@ public class FightView implements View{
     @Override
     public void setSecondItemImage(ImageView itemImage) {
 
+    }
+
+    @Override
+    public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+        HPBarMonster.setWidth(remainingVitality*245/maxVitality);
     }
 
 

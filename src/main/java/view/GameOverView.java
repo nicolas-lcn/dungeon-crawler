@@ -123,5 +123,10 @@ public class GameOverView implements View{
 
     }
 
+    @Override
+    public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+
+    }
+
 
 }

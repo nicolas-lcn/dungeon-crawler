@@ -189,6 +189,10 @@ public class JavaFXController implements GameController{
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
+        else{
+            view.updateHPBar(player.getAvatar().getVitality(), initPlayerVitality);
+            view.updateMonsterHPBar(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getAvatar().getVitality(), 60);
+        }
     }
 
     @Override
@@ -219,7 +223,6 @@ public class JavaFXController implements GameController{
     }
 
     public void handleInventoryDisplay(){
-        System.out.println(player.getInventory());
         if( ! player.getInventory().isEmpty()){
             view.setFirstItemImage(player.getInventory().getItem(0).getImage());
             if(player.getInventory().getSize()>1)view.setSecondItemImage(player.getInventory().getItem(1).getImage());

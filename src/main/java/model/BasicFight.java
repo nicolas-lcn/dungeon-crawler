@@ -15,12 +15,12 @@ public class BasicFight extends Fight {
         if(player.getVitality()>=0 && enemy.getVitality()>=0){
             if(player.isTurnToAttack()){
                 player.attack(enemy);
+                if(enemy.getVitality()<=0) return true;
                 player.setTurnToAttack(false);
                 enemy.setTurnToAttack(true);
             }
             if(enemy.isTurnToAttack()) enemy.attack(player);
-            return false;
         }
-        return true;
+        return player.getVitality()<=0 || enemy.getVitality()<=0;
     }
 }
