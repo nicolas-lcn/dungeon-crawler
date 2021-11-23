@@ -116,7 +116,7 @@ public class FightView implements View{
 
         //Setting the value of the transition along the x axis.
         playerAttack.setFromX(0);
-        playerAttack.setToX(1050);
+        playerAttack.setToX(450);
 
         //Setting the cycle count for the transition
         playerAttack.setCycleCount(2);
@@ -147,7 +147,7 @@ public class FightView implements View{
 
         //Setting the value of the transition along the x axis.
         enemyAttack.setFromX(0);
-        enemyAttack.setToX(-580);
+        enemyAttack.setToX(-290);
 
         //Setting the cycle count for the transition
         enemyAttack.setCycleCount(2);

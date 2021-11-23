@@ -38,6 +38,7 @@ public class FXSceneController {
     }
 
     public void switchGameOver() throws IOException {
+        System.out.println("loose");
         FXMLLoader fxmlLoader = new FXMLLoader(new File("src/main/java/view/FXMLViews/GameOver.fxml").toURI().toURL());
         Parent gameOver = fxmlLoader.load();
         Scene scene = new Scene(gameOver);

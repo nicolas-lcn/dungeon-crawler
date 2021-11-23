@@ -4,27 +4,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="MainView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FightView">
+<AnchorPane fx:id="MainView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FightView">
     <children>
-        <ImageView fx:id="RoomViewer" fitHeight="1080.0" fitWidth="1926.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="RoomViewer" fitHeight="540.0" fitWidth="950.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../assets/FightScene.png" />
             </image>
         </ImageView>
-      <AnchorPane fx:id="PlayerAnchor" layoutX="300.0" layoutY="215.0" prefHeight="325.0" prefWidth="262.0">
+      <AnchorPane fx:id="EnemyAnchor" layoutX="412.0" layoutY="30.0" prefHeight="325.0" prefWidth="262.0">
          <children>
-            <ImageView fx:id="PlayerImage" fitHeight="325.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="EnemyImage" fitHeight="321.0" fitWidth="475.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../assets/playerAttack.gif" />
+                    <Image url="@../assets/demon-attack.gif" />
                 </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="EnemyAnchor" layoutX="1068.0" layoutY="125.0" prefHeight="584.0" prefWidth="660.0">
+      <AnchorPane fx:id="PlayerAnchor" layoutX="118.0" layoutY="129.0" prefHeight="246.0" prefWidth="228.0">
          <children>
-            <ImageView fx:id="EnemyImage" fitHeight="667.0" fitWidth="767.0" layoutX="-107.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="PlayerImage" fitHeight="175.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../assets/demon-attack.gif" />
+                    <Image url="@../assets/playerAttack.gif" />
                 </image>
             </ImageView>
          </children>

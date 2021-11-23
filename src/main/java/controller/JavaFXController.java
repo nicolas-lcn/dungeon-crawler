@@ -21,6 +21,8 @@ public class JavaFXController implements GameController{
     boolean isInventoryOpened;
     FightCreator fightCreator;
     Fight fight;
+    boolean hasShownComponent;
+    boolean isGameStarted;
 
     public JavaFXController(Player player){
         this.player = player;
@@ -75,9 +77,15 @@ public class JavaFXController implements GameController{
 
     @Override
     public void startGame() {
-        gameState.resumeGame();
-        this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
-        handleDoorDisplay();
+        if(!isGameStarted) {
+            gameState.resumeGame();
+            hasShownComponent = false;
+            this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
+            handleComponentDisplay();
+            handleDoorDisplay();
+            isGameStarted = true;
+        }
+
     }
 
     @Override
@@ -120,11 +128,13 @@ public class JavaFXController implements GameController{
 
     @Override
     public void goForward() {
+        int playerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
         MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
-        view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
-        view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
-        view.waitToClear(1000);
+        int newPlayerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
+        hasShownComponent = playerPosition==newPlayerPosition;
+        handleComponentDisplay();
         handleDoorDisplay();
+        if(player.getAvatar().getVitality()<=0) gameState.gameOver();
     }
 
     @Override
@@ -155,7 +165,15 @@ public class JavaFXController implements GameController{
 
     @Override
     public void handleFight(boolean hasStarted, Character enemyFighter) {
-        if(hasStarted) view.stopFight();
+        if(hasStarted){
+            if(player.getAvatar().getVitality()<=0){
+                System.out.println("loose");
+                gameState.gameOver();
+            }
+            else{
+                view.stopFight();
+            }
+        }
         else{
             fight = fightCreator.createFight(player.getAvatar(), enemyFighter);
             view.beginFight();
@@ -173,6 +191,14 @@ public class JavaFXController implements GameController{
 
     public void handleDoorDisplay(){
         view.waitToShow(500, dungeon.getCurrentFloor().getCurrentRoom().possibleDirections().contains(player.getLookingDirection()));
+    }
+
+    public void handleComponentDisplay(){
+        if( ! hasShownComponent) {
+            view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
+            view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
+            view.waitToClear(1000);
+        }
     }
 
 }
