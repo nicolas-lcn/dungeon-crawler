@@ -2,6 +2,7 @@ package model.states;
 
 import model.Character;
 import model.Direction;
+import model.Inventory;
 import model.Item;
 
 public class InventoryState extends State {
@@ -38,12 +39,8 @@ public class InventoryState extends State {
     public void endFight() {}
 
     @Override
-    public void handleUseItem(Item item) {
-
+    public void handleUseItem(Inventory inventory, Item item) {
+        inventory.useItem(item);
     }
 
-    @Override
-    public void handleMovement(Direction direction) {
-
-    }
 }

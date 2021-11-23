@@ -100,9 +100,9 @@ public class JavaFXController implements GameController{
     @Override
     public void handleUseItem() {
         Inventory inventory = player.getInventory();
-        inventory.useItem(inventory.getItem(inventory.getSelectedItemIndex()));
+        gameState.handleUseItem(inventory, inventory.getItem(inventory.getSelectedItemIndex()));
         if(inventory.getEquippedItem()!=null) view.setEquippedItemVisible();
-        handleHPBarDisplay();
+        handleAllPlayerPropertiesDisplay();
     }
 
     @Override
@@ -219,7 +219,7 @@ public class JavaFXController implements GameController{
     }
 
     public void handleInventoryDisplay(){
-        System.out.println(player.getInventory().isEmpty());
+        System.out.println(player.getInventory());
         if( ! player.getInventory().isEmpty()){
             view.setFirstItemImage(player.getInventory().getItem(0).getImage());
             if(player.getInventory().getSize()>1)view.setSecondItemImage(player.getInventory().getItem(1).getImage());

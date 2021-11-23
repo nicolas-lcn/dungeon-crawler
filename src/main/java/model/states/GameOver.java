@@ -2,6 +2,7 @@ package model.states;
 
 import model.Character;
 import model.Direction;
+import model.Inventory;
 import model.Item;
 
 public class GameOver extends State {
@@ -34,12 +35,8 @@ public class GameOver extends State {
     public void endFight() {}
 
     @Override
-    public void handleUseItem(Item item) {
+    public void handleUseItem(Inventory inventory, Item item) {
 
     }
 
-    @Override
-    public void handleMovement(Direction direction) {
-
-    }
 }

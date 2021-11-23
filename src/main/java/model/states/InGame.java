@@ -2,6 +2,7 @@ package model.states;
 
 import model.Character;
 import model.Direction;
+import model.Inventory;
 import model.Item;
 
 import java.io.IOException;
@@ -65,12 +66,8 @@ public class InGame extends State {
     public void endFight() {}
 
     @Override
-    public void handleUseItem(Item item) {
+    public void handleUseItem(Inventory inventory, Item item) {
 
     }
 
-    @Override
-    public void handleMovement(Direction direction) {
-
-    }
 }

@@ -2,6 +2,7 @@ package model.states;
 
 import model.Character;
 import model.Direction;
+import model.Inventory;
 import model.Item;
 
 import java.io.IOException;
@@ -50,12 +51,7 @@ public class TitleScreen extends State {
     public void endFight() {}
 
     @Override
-    public void handleUseItem(Item item) {
-
-    }
-
-    @Override
-    public void handleMovement(Direction direction) {
+    public void handleUseItem(Inventory inventory, Item item) {
 
     }
 }

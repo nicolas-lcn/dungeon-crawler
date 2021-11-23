@@ -55,13 +55,10 @@ public class GameState {
         state.endFight();
     }
 
-    public void handleUseItem(Item item) {
-        state.handleUseItem(item);
+    public void handleUseItem(Inventory inventory, Item item) {
+        state.handleUseItem(inventory, item);
     }
 
-    public void handleMovement(Direction direction) {
-        state.handleMovement(direction);
-    }
 
 
 }
