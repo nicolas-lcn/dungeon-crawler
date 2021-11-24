@@ -203,5 +203,10 @@ public class FightView implements View{
 
     }
 
+    @Override
+    public void setStrengthViewer(int strength) {
+
+    }
+
 
 }

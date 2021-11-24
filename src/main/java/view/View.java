@@ -32,4 +32,5 @@ public interface View {
     void updateMonsterHPBar(int remainingVitality, int maxVitality);
     void hideInventory();
     void resetItemImages();
+    void setStrengthViewer(int strength);
 }

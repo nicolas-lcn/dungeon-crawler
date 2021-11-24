@@ -141,5 +141,10 @@ public class TitleScreenView implements View{
 
     }
 
+    @Override
+    public void setStrengthViewer(int strength) {
+
+    }
+
 
 }

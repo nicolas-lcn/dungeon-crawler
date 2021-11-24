@@ -51,7 +51,7 @@
                         <Image url="@../assets/full-room.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane fx:id="DoorAnchor" layoutX="132.0" layoutY="150.0" prefHeight="142.0" prefWidth="120.0" visible="false">
+                  <AnchorPane fx:id="DoorAnchor" layoutX="132.0" layoutY="160.0" prefHeight="142.0" prefWidth="120.0" visible="false">
                      <children>
                         <ImageView fitHeight="249.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,12 +74,12 @@
                   <Image url="@../assets/UI.png" />
                </image>
             </ImageView>
-            <Text fx:id="GameStateViewer" layoutX="118.0" layoutY="902.0" stroke="WHITE" strokeType="OUTSIDE" textOrigin="CENTER" wrappingWidth="705.13671875">
+            <Text fx:id="GameStateViewer" layoutX="70" layoutY="450.0" stroke="WHITE" strokeType="OUTSIDE" textOrigin="CENTER" wrappingWidth="705.13671875">
                <font>
-                  <Font name="Consolas" size="37.0" />
+                  <Font name="Consolas" size="27.0" />
                </font>
             </Text>
-            <Text fx:id="StrengthViewer" layoutX="1004.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="458.13671875">
+            <Text fx:id="StrengthViewer" layoutX="500.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="458.13671875">
                <font>
                   <Font name="Consolas" size="27.0" />
                </font>

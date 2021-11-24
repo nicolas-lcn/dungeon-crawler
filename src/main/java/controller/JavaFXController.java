@@ -226,12 +226,13 @@ public class JavaFXController implements GameController{
     }
 
     public void handleStrengthDisplay(){
-
+        view.setStrengthViewer(player.getAvatar().getStrength());
     }
 
     public void handleComponentDisplay(){
         if( ! hasShownComponent) {
             view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
+            System.out.println(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
             view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
             view.waitToClear(1000);
         }

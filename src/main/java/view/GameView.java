@@ -166,6 +166,7 @@ public class GameView implements View{
             @Override
             public void handle(ActionEvent event) {
                 clearRoomComponentImage();
+                setUIText("");
             }
         });
         waitAnimation.play();
@@ -224,11 +225,19 @@ public class GameView implements View{
 
     @Override
     public void resetItemImages() {
+        selected = 0;
+        firstItemSelector.setVisible(false);
+        secondItemSelector.setVisible(false);
         FirstItemImage.setImage(null);
         SecondItemImage.setImage(null);
         FirstItemNumber.setText("");
         SecondItemNumber.setText("");
 
+    }
+
+    @Override
+    public void setStrengthViewer(int strength) {
+        StrengthViewer.setText(String.valueOf(strength));
     }
 
     public void clearRoomComponentImage() {

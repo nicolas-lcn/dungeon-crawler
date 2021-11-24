@@ -141,5 +141,10 @@ public class GameOverView implements View{
 
     }
 
+    @Override
+    public void setStrengthViewer(int strength) {
+
+    }
+
 
 }
