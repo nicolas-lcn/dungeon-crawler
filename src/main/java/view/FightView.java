@@ -128,12 +128,13 @@ public class FightView implements View{
         playerAttack.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                enemyAttack();
+                updateMonsterHPBar(enemyVitality, enemyInitVitality);
+                enemyAttack(playerVitality, playerInitVitality);
             }
         });
     }
 
-    private void enemyAttack() {
+    private void enemyAttack(int playerVitality, int playerInitVitality) {
         //Creating Translate Transition
         TranslateTransition enemyAttack = new TranslateTransition();
 
@@ -152,6 +153,13 @@ public class FightView implements View{
 
         //Setting auto reverse value to false
         enemyAttack.setAutoReverse(true);
+
+        enemyAttack.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                updateHPBar(playerVitality, playerInitVitality);
+            }
+        });
 
         enemyAttack.play();
     }

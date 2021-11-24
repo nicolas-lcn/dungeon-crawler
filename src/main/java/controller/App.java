@@ -30,7 +30,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Player player = new Player(100,60);
+        Player player = new Player(5,60);
 
         GameController javaFXController = new JavaFXController(player);
         FXSceneController fxSceneController = FXSceneController.getInstance();
