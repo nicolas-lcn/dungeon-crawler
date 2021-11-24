@@ -3,6 +3,7 @@ package model.states;
 import controller.FXSceneController;
 import model.*;
 import model.Character;
+import model.places.Dungeon;
 
 public abstract class State {
     public GameState gameState;
@@ -21,4 +22,5 @@ public abstract class State {
     public abstract void startFight(Character enemyFighter);
     public abstract void endFight();
     public abstract void handleUseItem(Inventory inventory, Item item);
+    public abstract void handleMovement(Move move, Player player, Dungeon dungeon);
 }

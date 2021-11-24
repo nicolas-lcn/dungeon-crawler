@@ -1,9 +1,8 @@
 package model.states;
 
+import model.*;
 import model.Character;
-import model.Direction;
-import model.Inventory;
-import model.Item;
+import model.places.Dungeon;
 
 public class GamePaused extends State {
     @Override
@@ -40,6 +39,11 @@ public class GamePaused extends State {
 
     @Override
     public void handleUseItem(Inventory inventory, Item item) {
+
+    }
+
+    @Override
+    public void handleMovement(Move move, Player player, Dungeon dungeon) {
 
     }
 

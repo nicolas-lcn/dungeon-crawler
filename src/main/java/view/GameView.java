@@ -198,8 +198,10 @@ public class GameView implements View{
         secondItemSelector.setVisible(false);
         FirstItemImage.setImage(null);
         SecondItemImage.setImage(null);
-        FirstItemNumber.setText("");
-        SecondItemNumber.setText("");
+        FirstItemNumber.setVisible(false);
+        SecondItemNumber.setVisible(false);
+        FirstEquippedIcon.setVisible(false);
+        SecondEquippedIcon.setVisible(false);
 
     }
 

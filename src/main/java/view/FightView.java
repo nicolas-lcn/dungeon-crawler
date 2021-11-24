@@ -4,11 +4,13 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class FightView implements View{
@@ -21,6 +23,11 @@ public class FightView implements View{
     public Rectangle HPBar;
     public Rectangle HPBarMonster;
     SequentialTransition seqT;
+
+    Image monsterIdle = new Image(new File("src/main/java/view/assets/demon-idle.gif").toURI().toString());
+    Image playerIdle = new Image(new File("src/main/java/view/assets/adventurer-idle.gif").toURI().toString());
+    Image playerRunToRight = new Image(new File("src/main/java/view/assets/adventurer-run.gif").toURI().toString());
+    Image playerRunToLeft = new Image(new File("src/main/java/view/assets/adventurer-run1.gif").toURI().toString());
 
     @Override
     public void startGame() {
@@ -79,7 +86,6 @@ public class FightView implements View{
 
     @Override
     public void setRoomComponentImage(ImageView image) {
-        EnemyImage.setImage(image.getImage());
     }
 
     @Override
@@ -104,64 +110,153 @@ public class FightView implements View{
 
     @Override
     public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
-        //Creating Translate Transition
-        TranslateTransition playerAttack = new TranslateTransition();
-
+        TranslateTransition playerToEnemy = new TranslateTransition();
         //Setting the duration of the transition
-        playerAttack.setDuration(Duration.millis(1000));
+        playerToEnemy.setDuration(Duration.millis(500));
 
         //Setting the node for the transition
-        playerAttack.setNode(PlayerAnchor);
+        playerToEnemy.setNode(PlayerAnchor);
 
         //Setting the value of the transition along the x axis.
-        playerAttack.setFromX(0);
-        playerAttack.setToX(450);
+        playerToEnemy.setFromX(0);
+        playerToEnemy.setToX(300);
 
-        //Setting the cycle count for the transition
-        playerAttack.setCycleCount(2);
-
-        //Setting auto reverse value to false
-        playerAttack.setAutoReverse(true);
-
-        playerAttack.play();
-
-        playerAttack.setOnFinished(new EventHandler<ActionEvent>() {
+        playerToEnemy.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                updateMonsterHPBar(enemyVitality, enemyInitVitality);
+
+                PlayerImage.setImage(new Image(
+                        new File("src/main/java/view/assets/playerAttack.gif").toURI().toString()
+                        )
+                );
+            }
+        });
+
+        TranslateTransition playerEnemyToBack = new TranslateTransition();
+        //Setting the duration of the transition
+        playerEnemyToBack.setDuration(Duration.millis(500));
+
+        //Setting the node for the transition
+        playerEnemyToBack.setNode(PlayerAnchor);
+
+        //Setting the value of the transition along the x axis.
+        playerEnemyToBack.setFromX(300);
+        playerEnemyToBack.setToX(0);
+
+        playerEnemyToBack.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                PlayerImage.setImage(playerIdle);
                 enemyAttack(playerVitality, playerInitVitality);
             }
         });
+
+        TranslateTransition playerAttackAnimation = new TranslateTransition();
+        //Setting the duration of the transition
+        playerAttackAnimation.setDuration(Duration.millis(500));
+
+        //Setting the node for the transition
+        playerAttackAnimation.setNode(PlayerAnchor);
+
+        //Setting the value of the transition along the x axis.
+        playerAttackAnimation.setFromX(300);
+        playerAttackAnimation.setToX(300);
+
+        playerAttackAnimation.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                updateMonsterHPBar(enemyVitality, enemyInitVitality);
+                PlayerImage.setImage(playerRunToLeft);
+            }
+        });
+
+        SequentialTransition sequentialTransition = new SequentialTransition(playerToEnemy, playerAttackAnimation, playerEnemyToBack);
+
+        PlayerImage.setImage(playerRunToRight);
+        sequentialTransition.play();
     }
 
     private void enemyAttack(int playerVitality, int playerInitVitality) {
         //Creating Translate Transition
-        TranslateTransition enemyAttack = new TranslateTransition();
+        TranslateTransition enemyToPlayer = new TranslateTransition();
 
         //Setting the duration of the transition
-        enemyAttack.setDuration(Duration.millis(1000));
+        enemyToPlayer.setDuration(Duration.millis(500));
 
         //Setting the node for the transition
-        enemyAttack.setNode(EnemyAnchor);
+        enemyToPlayer.setNode(EnemyAnchor);
 
         //Setting the value of the transition along the x axis.
-        enemyAttack.setFromX(0);
-        enemyAttack.setToX(-290);
+        enemyToPlayer.setFromX(0);
+        enemyToPlayer.setToX(-290);
 
         //Setting the cycle count for the transition
-        enemyAttack.setCycleCount(2);
+        enemyToPlayer.setCycleCount(1);
 
         //Setting auto reverse value to false
-        enemyAttack.setAutoReverse(true);
+        enemyToPlayer.setAutoReverse(false);
 
-        enemyAttack.setOnFinished(new EventHandler<ActionEvent>() {
+        enemyToPlayer.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                updateHPBar(playerVitality, playerInitVitality);
+                EnemyImage.setImage(new Image(
+                        new File("src/main/java/view/assets/demon-attack.gif").toURI().toString()
+                        )
+                );
             }
         });
 
-        enemyAttack.play();
+        //Creating Translate Transition
+        TranslateTransition enemyAttackAnimation = new TranslateTransition();
+
+        //Setting the duration of the transition
+        enemyAttackAnimation.setDuration(Duration.millis(2000));
+
+        //Setting the node for the transition
+        enemyAttackAnimation.setNode(EnemyAnchor);
+
+        //Setting the value of the transition along the x axis.
+        enemyAttackAnimation.setFromX(-290);
+        enemyAttackAnimation.setToX(-290);
+
+        //Setting the cycle count for the transition
+        enemyAttackAnimation.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        enemyAttackAnimation.setAutoReverse(false);
+
+        enemyAttackAnimation.setOnFinished(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                updateHPBar(playerVitality, playerInitVitality);
+                EnemyImage.setImage(monsterIdle);
+            }
+        });
+
+        //Creating Translate Transition
+        TranslateTransition enemyLeftToBack = new TranslateTransition();
+
+        //Setting the duration of the transition
+        enemyLeftToBack.setDuration(Duration.millis(500));
+
+        //Setting the node for the transition
+        enemyLeftToBack.setNode(EnemyAnchor);
+
+        //Setting the value of the transition along the x axis.
+        enemyLeftToBack.setFromX(-290);
+        enemyLeftToBack.setToX(0);
+
+        //Setting the cycle count for the transition
+        enemyLeftToBack.setCycleCount(1);
+
+        //Setting auto reverse value to false
+        enemyLeftToBack.setAutoReverse(false);
+
+
+        SequentialTransition sequentialTransition = new SequentialTransition(enemyToPlayer, enemyAttackAnimation, enemyLeftToBack);
+
+        sequentialTransition.play();
     }
 
     @Override

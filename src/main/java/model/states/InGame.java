@@ -1,16 +1,16 @@
 package model.states;
 
+import controller.MoveController;
+import model.*;
 import model.Character;
-import model.Direction;
-import model.Inventory;
-import model.Item;
+import model.places.Dungeon;
 
 import java.io.IOException;
 
 public class InGame extends State {
     @Override
     public void openInventory() {
-        System.out.println("Voici votre Inventaire : ");
+        System.out.println("Ouverture de l'inventaire.. ");
         State state = new InventoryState();
         gameState.setState(state);
         state.setGameState(gameState);
@@ -68,6 +68,11 @@ public class InGame extends State {
     @Override
     public void handleUseItem(Inventory inventory, Item item) {
 
+    }
+
+    @Override
+    public void handleMovement(Move move, Player player, Dungeon dungeon) {
+        MoveController.applyMove(move, dungeon, player);
     }
 
 }

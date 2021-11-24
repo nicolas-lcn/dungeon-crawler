@@ -18,7 +18,7 @@
          <children>
             <ImageView fx:id="EnemyImage" fitHeight="321.0" fitWidth="475.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../assets/demon-attack.gif" />
+                    <Image url="@../assets/demon-idle.gif" />
                 </image>
             </ImageView>
          </children>
@@ -27,7 +27,7 @@
          <children>
             <ImageView fx:id="PlayerImage" fitHeight="175.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../assets/playerAttack.gif" />
+                    <Image url="@../assets/adventurer-idle.gif" />
                 </image>
             </ImageView>
          </children>

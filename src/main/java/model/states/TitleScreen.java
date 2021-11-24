@@ -1,9 +1,8 @@
 package model.states;
 
+import model.*;
 import model.Character;
-import model.Direction;
-import model.Inventory;
-import model.Item;
+import model.places.Dungeon;
 
 import java.io.IOException;
 
@@ -52,6 +51,11 @@ public class TitleScreen extends State {
 
     @Override
     public void handleUseItem(Inventory inventory, Item item) {
+
+    }
+
+    @Override
+    public void handleMovement(Move move, Player player, Dungeon dungeon) {
 
     }
 }

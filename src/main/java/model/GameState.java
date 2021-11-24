@@ -1,5 +1,6 @@
 package model;
 
+import model.places.Dungeon;
 import model.states.*;
 
 public class GameState {
@@ -57,6 +58,10 @@ public class GameState {
 
     public void handleUseItem(Inventory inventory, Item item) {
         state.handleUseItem(inventory, item);
+    }
+
+    public void handleMovement(Move move, Player player, Dungeon dungeon){
+        state.handleMovement(move, player, dungeon);
     }
 
 

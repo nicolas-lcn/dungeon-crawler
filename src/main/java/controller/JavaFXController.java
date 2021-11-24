@@ -137,7 +137,7 @@ public class JavaFXController implements GameController{
     @Override
     public void goForward() {
         int playerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
-        MoveController.applyMove(new Move(player.getLookingDirection()), dungeon, player);
+        gameState.handleMovement(new Move(player.getLookingDirection()), player, dungeon);
         int newPlayerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
         hasShownComponent = playerPosition==newPlayerPosition;
         handleComponentDisplay();
@@ -158,7 +158,6 @@ public class JavaFXController implements GameController{
     public void handleInventoryNavLeft() {
         Inventory inventory = player.getInventory();
         inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()-1);
-        System.out.println(inventory.getSelectedItemIndex());
         view.setSelector(inventory.getSelectedItemIndex());
     }
 
@@ -194,16 +193,18 @@ public class JavaFXController implements GameController{
 
     @Override
     public void handleAttack() {
-        Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
-        view.playerAttack(
-                player.getAvatar().getVitality(),
-                player.getAvatar().getInitialVitality(),
-                enemy.getAvatar().getVitality(),
-                enemy.getAvatar().getInitialVitality()
-        );
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
+        else{
+            Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
+            view.playerAttack(
+                    player.getAvatar().getVitality(),
+                    player.getAvatar().getInitialVitality(),
+                    enemy.getAvatar().getVitality(),
+                    enemy.getAvatar().getInitialVitality()
+            );
+        }
     }
 
     @Override
@@ -243,11 +244,13 @@ public class JavaFXController implements GameController{
 
         Inventory inventory = player.getInventory();
 
+
         if(inventory.isEmpty()) {
             view.hideInventory();
         }else{
             view.setNumberOfItems(inventory.getItemsQuantity());
-            view.setSelector(inventory.getSelectedItemIndex());
+            if(isInventoryOpened)
+                view.setSelector(inventory.getSelectedItemIndex());
         }
 
         for(Item item : inventory.getItems()){
@@ -257,8 +260,9 @@ public class JavaFXController implements GameController{
             if(item.isWearable() && item.equals(inventory.getEquippedItem()))
                 view.setEquippedItemVisible(inventory.getIndex(item));
 
-            if(item.isStackable())
+            if(item.isStackable()) {
                 view.setNumberVisible(inventory.getIndex(item));
+            }
         }
     }
 

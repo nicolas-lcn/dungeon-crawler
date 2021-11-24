@@ -1,9 +1,8 @@
 package model.states;
 
+import model.*;
 import model.Character;
-import model.Direction;
-import model.Inventory;
-import model.Item;
+import model.places.Dungeon;
 
 public class InventoryState extends State {
     @Override
@@ -41,6 +40,11 @@ public class InventoryState extends State {
     @Override
     public void handleUseItem(Inventory inventory, Item item) {
         inventory.useItem(item);
+    }
+
+    @Override
+    public void handleMovement(Move move, Player player, Dungeon dungeon) {
+
     }
 
 }

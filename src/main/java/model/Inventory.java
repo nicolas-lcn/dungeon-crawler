@@ -60,7 +60,7 @@ public class Inventory {
             itemsQuantity.set(itemIndex, itemsQuantity.get(itemIndex)-1);
         }
         else{
-            if(selectedItemIndex >= itemIndex && selectedItemIndex-1>0){
+            if(selectedItemIndex >= itemIndex && selectedItemIndex-1>=0){
                 selectedItemIndex--;
             }
             items.remove(item);
