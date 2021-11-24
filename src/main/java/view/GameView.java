@@ -190,17 +190,44 @@ public class GameView implements View{
     }
 
     @Override
+    public void setItemImage(ImageView itemImage, int index) {
+        if(itemImage != null){
+            if(index == 0) {
+                FirstItemAnchor.setVisible(true);
+                setFirstItemImage(itemImage);
+            }
+            if(index == 1){
+                SecondItemAnchor.setVisible(true);
+                setSecondItemImage(itemImage);
+            }
+        }
+    }
+
     public void setFirstItemImage(ImageView itemImage) {
         FirstItemImage.setImage(itemImage.getImage());
     }
 
-    @Override
     public void setSecondItemImage(ImageView itemImage) {
         SecondItemImage.setImage(itemImage.getImage());
     }
 
     @Override
     public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+
+    }
+
+    @Override
+    public void hideInventory() {
+        FirstItemAnchor.setVisible(false);
+        SecondItemAnchor.setVisible(false);
+    }
+
+    @Override
+    public void resetItemImages() {
+        FirstItemImage.setImage(null);
+        SecondItemImage.setImage(null);
+        FirstItemNumber.setText("");
+        SecondItemNumber.setText("");
 
     }
 

@@ -28,8 +28,8 @@ public interface View {
     void waitToClear(int millis);
     void waitToShow(int millis, boolean hasToShow);
     void updateHPBar(int remainingVitality, int maxVitality);
-    void setFirstItemImage(ImageView itemImage);
-    void setSecondItemImage(ImageView itemImage);
+    void setItemImage(ImageView itemImage, int index);
     void updateMonsterHPBar(int remainingVitality, int maxVitality);
-
+    void hideInventory();
+    void resetItemImages();
 }

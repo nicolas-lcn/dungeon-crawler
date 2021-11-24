@@ -74,9 +74,11 @@ public class JavaFXController implements GameController{
             view.closeInventory();
         }
         else{
-            isInventoryOpened = true;
-            view.openInventory();
-            gameState.openInventory();
+            if( ! player.getInventory().isEmpty()) {
+                isInventoryOpened = true;
+                view.openInventory();
+                gameState.openInventory();
+            }
         }
     }
 
@@ -101,7 +103,9 @@ public class JavaFXController implements GameController{
     @Override
     public void handleUseItem() {
         Inventory inventory = player.getInventory();
+        int initSelected = inventory.getSelectedItemIndex();
         gameState.handleUseItem(inventory, inventory.getItem(inventory.getSelectedItemIndex()));
+        if(inventory.getSelectedItemIndex()<initSelected) view.setItemImage(null, initSelected);
         handleAllPlayerPropertiesDisplay();
     }
 
@@ -159,13 +163,17 @@ public class JavaFXController implements GameController{
 
     @Override
     public void handleRight() {
-        if(isInventoryOpened) handleInventoryNavRight();
+        if(isInventoryOpened){
+            if(player.getInventory().getSize()>1) handleInventoryNavRight();
+        }
         else handleRotation(Direction.East);
     }
 
     @Override
     public void handleLeft() {
-        if(isInventoryOpened) handleInventoryNavLeft();
+        if(isInventoryOpened){
+            if(player.getInventory().getSize()>1) handleInventoryNavLeft();
+        }
         else handleRotation(Direction.West);
     }
 
@@ -230,16 +238,26 @@ public class JavaFXController implements GameController{
     }
 
     public void handleInventoryDisplay(){
+
+        view.resetItemImages();
+
         Inventory inventory = player.getInventory();
-        if( ! inventory.isEmpty()){
-            view.setFirstItemImage(inventory.getItem(0).getImage());
-            if(inventory.getSize()>1)
-                view.setSecondItemImage(inventory.getItem(1).getImage());
-            if(inventory.getItem(inventory.getSelectedItemIndex()).isWearable())
-                view.setEquippedItemVisible(inventory.getSelectedItemIndex());
-            view.setNumberOfItems(new ArrayList<>(inventory.getItems().values()));
-            if(inventory.getItem(inventory.getSelectedItemIndex()).isStackable())
-                view.setNumberVisible(inventory.getSelectedItemIndex());
+
+        if(inventory.isEmpty()) {
+            view.hideInventory();
+        }else{
+            view.setNumberOfItems(inventory.getItemsQuantity());
+        }
+
+        for(Item item : inventory.getItems()){
+
+            view.setItemImage(item.getImage(), inventory.getIndex(item));
+
+            if(item.isWearable() && item.equals(inventory.getEquippedItem()))
+                view.setEquippedItemVisible(inventory.getIndex(item));
+
+            if(item.isStackable())
+                view.setNumberVisible(inventory.getIndex(item));
         }
     }
 

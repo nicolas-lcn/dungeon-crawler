@@ -121,17 +121,23 @@ public class TitleScreenView implements View{
     }
 
     @Override
-    public void setFirstItemImage(ImageView itemImage) {
+    public void setItemImage(ImageView itemImage, int index) {
 
     }
 
-    @Override
-    public void setSecondItemImage(ImageView itemImage) {
-
-    }
 
     @Override
     public void updateMonsterHPBar(int remainingVitality, int maxVitality) {
+
+    }
+
+    @Override
+    public void hideInventory() {
+
+    }
+
+    @Override
+    public void resetItemImages() {
 
     }
 
