@@ -71,16 +71,6 @@ public class GameOverView implements View{
     }
 
     @Override
-    public void inventoryNavLeft() {
-
-    }
-
-    @Override
-    public void inventoryNavRight() {
-
-    }
-
-    @Override
     public void setEquippedItemVisible(int index) {
 
     }
@@ -96,12 +86,7 @@ public class GameOverView implements View{
     }
 
     @Override
-    public void playerAttack() {
-
-    }
-
-    @Override
-    public void enemyAttack() {
+    public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
 
     }
 
@@ -143,6 +128,11 @@ public class GameOverView implements View{
 
     @Override
     public void setStrengthViewer(int strength) {
+
+    }
+
+    @Override
+    public void setSelector(int index) {
 
     }
 

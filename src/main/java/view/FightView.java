@@ -88,16 +88,6 @@ public class FightView implements View{
     }
 
     @Override
-    public void inventoryNavLeft() {
-
-    }
-
-    @Override
-    public void inventoryNavRight() {
-
-    }
-
-    @Override
     public void setEquippedItemVisible(int index) {
 
     }
@@ -113,7 +103,7 @@ public class FightView implements View{
     }
 
     @Override
-    public void playerAttack() {
+    public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
         //Creating Translate Transition
         TranslateTransition playerAttack = new TranslateTransition();
 
@@ -143,8 +133,7 @@ public class FightView implements View{
         });
     }
 
-    @Override
-    public void enemyAttack() {
+    private void enemyAttack() {
         //Creating Translate Transition
         TranslateTransition enemyAttack = new TranslateTransition();
 
@@ -205,6 +194,11 @@ public class FightView implements View{
 
     @Override
     public void setStrengthViewer(int strength) {
+
+    }
+
+    @Override
+    public void setSelector(int index) {
 
     }
 

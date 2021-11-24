@@ -105,32 +105,6 @@ public class GameView implements View{
     }
 
     @Override
-    public void inventoryNavLeft() {
-        if(selected == 0){
-            selected = 1;
-            firstItemSelector.setVisible(false);
-            secondItemSelector.setVisible(true);
-        }else{
-            selected = 0;
-            firstItemSelector.setVisible(true);
-            secondItemSelector.setVisible(false);
-        }
-    }
-
-    @Override
-    public void inventoryNavRight() {
-        if(selected == 0){
-            selected = 1;
-            firstItemSelector.setVisible(false);
-            secondItemSelector.setVisible(true);
-        }else{
-            selected = 0;
-            firstItemSelector.setVisible(true);
-            secondItemSelector.setVisible(false);
-        }
-    }
-
-    @Override
     public void setEquippedItemVisible(int index) {
         if(index==0) FirstEquippedIcon.setVisible(true);
         if(index==1) SecondEquippedIcon.setVisible(true);
@@ -150,12 +124,7 @@ public class GameView implements View{
     }
 
     @Override
-    public void playerAttack() {
-
-    }
-
-    @Override
-    public void enemyAttack() {
+    public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
 
     }
 
@@ -225,7 +194,6 @@ public class GameView implements View{
 
     @Override
     public void resetItemImages() {
-        selected = 0;
         firstItemSelector.setVisible(false);
         secondItemSelector.setVisible(false);
         FirstItemImage.setImage(null);
@@ -238,6 +206,18 @@ public class GameView implements View{
     @Override
     public void setStrengthViewer(int strength) {
         StrengthViewer.setText(String.valueOf(strength));
+    }
+
+    @Override
+    public void setSelector(int index) {
+        selected = index;
+        if(index == 0){
+            firstItemSelector.setVisible(true);
+            secondItemSelector.setVisible(false);
+        }else{
+            firstItemSelector.setVisible(false);
+            secondItemSelector.setVisible(true);
+        }
     }
 
     public void clearRoomComponentImage() {

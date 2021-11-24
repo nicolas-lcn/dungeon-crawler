@@ -11,8 +11,6 @@ import model.places.Dungeon;
 import model.places.SimpleDungeon;
 import view.View;
 
-import java.util.ArrayList;
-
 public class JavaFXController implements GameController{
 
     GameState gameState;
@@ -78,6 +76,7 @@ public class JavaFXController implements GameController{
                 isInventoryOpened = true;
                 view.openInventory();
                 gameState.openInventory();
+                player.getInventory().setSelectedItemIndex(0);
             }
         }
     }
@@ -150,15 +149,17 @@ public class JavaFXController implements GameController{
     @Override
     public void handleInventoryNavRight() {
         Inventory inventory = player.getInventory();
-        view.inventoryNavRight();
         inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()+1);
+        System.out.println(inventory.getSelectedItemIndex());
+        view.setSelector(inventory.getSelectedItemIndex());
     }
 
     @Override
     public void handleInventoryNavLeft() {
         Inventory inventory = player.getInventory();
-        view.inventoryNavLeft();
         inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()-1);
+        System.out.println(inventory.getSelectedItemIndex());
+        view.setSelector(inventory.getSelectedItemIndex());
     }
 
     @Override
@@ -193,18 +194,16 @@ public class JavaFXController implements GameController{
 
     @Override
     public void handleAttack() {
-        view.playerAttack();
+        Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
+        view.playerAttack(
+                player.getAvatar().getVitality(),
+                player.getAvatar().getInitialVitality(),
+                enemy.getAvatar().getVitality(),
+                enemy.getAvatar().getInitialVitality()
+        );
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
         if(isFightOver) gameState.endFight();
-        else{
-            Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
-            handleHPBarDisplay();
-            view.updateMonsterHPBar(
-                    enemy.getAvatar().getVitality(),
-                    enemy.getAvatar().getInitialVitality()
-            );
-        }
     }
 
     @Override
@@ -248,6 +247,7 @@ public class JavaFXController implements GameController{
             view.hideInventory();
         }else{
             view.setNumberOfItems(inventory.getItemsQuantity());
+            view.setSelector(inventory.getSelectedItemIndex());
         }
 
         for(Item item : inventory.getItems()){

@@ -98,7 +98,7 @@ public class Inventory {
     }
 
     public void setSelectedItemIndex(int selectedItemIndex) {
-        if(selectedItemIndex>items.size()) this.selectedItemIndex = 0;
+        if(selectedItemIndex>items.size()-1) this.selectedItemIndex = 0;
         else if(selectedItemIndex<0) this.selectedItemIndex = items.size()-1;
         else this.selectedItemIndex = selectedItemIndex;
     }
