@@ -13,8 +13,8 @@ public class SimpleItemGenerator extends ItemGenerator{
 
     public SimpleItemGenerator(){
         possibleItems = new ArrayList<>();
-        possibleItems.add(new Weapon("Sword of the Hero", 2));
-        possibleItems.add(new Potion("Vitality Potion", 4));
+        possibleItems.add(new Weapon("Epee du Heros", 2));
+        possibleItems.add(new Potion("Potion de Vitalite", 4));
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SimpleItemGenerator extends ItemGenerator{
     @Override
     public void reset() {
         possibleItems = new ArrayList<>();
-        possibleItems.add(new Weapon("Sword of the Hero", 2));
-        possibleItems.add(new Potion("Vitality Potion", 4));
+        possibleItems.add(new Weapon("Epee du Heros", 2));
+        possibleItems.add(new Potion("Potion de Vitalite", 4));
     }
 }

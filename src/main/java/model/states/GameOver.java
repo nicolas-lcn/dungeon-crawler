@@ -4,6 +4,8 @@ import model.*;
 import model.Character;
 import model.places.Dungeon;
 
+import java.io.IOException;
+
 public class GameOver extends State {
     @Override
     public void openInventory() {}
@@ -16,16 +18,23 @@ public class GameOver extends State {
 
     @Override
     public void titleScreen() {
-        State state = new TitleScreen();
-        gameState.setState(state);
-        state.setGameState(gameState);
     }
 
     @Override
     public void pauseGame() {}
 
     @Override
-    public void resumeGame() {}
+    public void resumeGame() {
+        System.out.println("Lancement de la partie...");
+        State state = new InGame();
+        try {
+            sceneController.switchInGame();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameState.setState(state);
+        state.setGameState(gameState);
+    }
 
     @Override
     public void startFight(Character enemyFighter) {}

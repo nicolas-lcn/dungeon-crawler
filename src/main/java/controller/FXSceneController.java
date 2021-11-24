@@ -45,6 +45,7 @@ public class FXSceneController {
         scene.setOnKeyPressed(gameController.getEventHandler());
         primaryStage.setScene(scene);
         gameController.setView(fxmlLoader.getController());
+        gameController.setGameStarted(false);
     }
 
     public void switchTitleScreen() throws IOException {

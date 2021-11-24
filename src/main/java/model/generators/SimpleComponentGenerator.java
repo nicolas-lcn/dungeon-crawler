@@ -1,9 +1,8 @@
 package model.generators;
 
 import controller.RandomController;
-import model.BasicFightCreator;
 import model.GameState;
-import model.Weapon;
+import model.SimpleCharacter;
 import model.components.Chest;
 import model.components.Component;
 import model.components.Monster;
@@ -21,7 +20,7 @@ public class SimpleComponentGenerator extends ComponentGenerator{
         this.itemGenerator = itemGenerator;
         this.gameState = gameState;
         possibleComponents = new ArrayList<>();
-        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), gameState));
+        possibleComponents.add(new Monster(new SimpleCharacter(5, 30),itemGenerator.generate(), gameState));
         possibleComponents.add(new Chest(itemGenerator.generate()));
         possibleComponents.add(new Trap(4));
     }
@@ -37,7 +36,7 @@ public class SimpleComponentGenerator extends ComponentGenerator{
     @Override
     public void reset() {
         possibleComponents = new ArrayList<>();
-        possibleComponents.add(new Monster(5,30,itemGenerator.generate(), gameState));
+        possibleComponents.add(new Monster(new SimpleCharacter(5, 30),itemGenerator.generate(), gameState));
         possibleComponents.add(new Chest(itemGenerator.generate()));
         possibleComponents.add(new Trap(4));
     }

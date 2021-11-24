@@ -4,13 +4,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Character;
 import model.Player;
-import model.components.Component;
+
 
 import java.io.File;
-import java.net.URISyntaxException;
+
 
 public class Trap implements Component {
-    private int strength;
+    private final int strength;
 
     public Trap(int strength) {
         this.strength = strength;
@@ -28,7 +28,7 @@ public class Trap implements Component {
 
     @Override
     public String getInteractAlert() {
-        return "IT'S A TRAP !";
+        return "C'EST UN PIEGE !";
     }
 
     @Override

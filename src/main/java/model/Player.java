@@ -1,50 +1,23 @@
 package model;
 
-public class Player{
+public interface Player {
+    Move goNorth();
 
-    private Inventory inventory;
-    private Character avatar;
-    private Direction lookingDirection;
+    Move goSouth();
 
-    public Player(int strength, int vitality) {
-        avatar = new Character(strength, vitality);
-        inventory = new Inventory(avatar);
-        lookingDirection = Direction.North;
+    Move goEast();
 
-    }
+    Move goWest();
 
-    public Move goNorth() {
-        return new Move(Direction.North);
-    }
-    public Move goSouth() {
-        return new Move(Direction.South);
-    }
+    void look(Direction direction);
 
-    public Move goEast() {
-        return new Move(Direction.East);
-    }
-    public Move goWest() {
-        return new Move(Direction.West);
-    }
+    Inventory getInventory();
 
-    public void look(Direction direction){
-        this.lookingDirection = direction;
-    }
+    Character getAvatar();
 
-    public Inventory getInventory() {
-        return inventory;
-    }
+    Direction getLookingDirection();
 
-    public Character getAvatar() {
-        return avatar;
-    }
+    void gainItem(Item item);
 
-    public Direction getLookingDirection() {
-        return lookingDirection;
-    }
-
-    public void gainItem(Item item) {inventory.addItem(item);}
-
-    public void giveItem(Character target, Item item){}
-
+    void giveItem(Character target, Item item);
 }

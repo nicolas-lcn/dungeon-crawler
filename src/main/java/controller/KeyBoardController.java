@@ -1,10 +1,6 @@
 package controller;
 
 import javafx.scene.input.KeyEvent;
-import model.Direction;
-import model.Player;
-
-import java.util.Scanner;
 
 public class KeyBoardController {
 
@@ -12,31 +8,6 @@ public class KeyBoardController {
 
     public KeyBoardController(GameController controller) {
         this.controller = controller;
-    }
-
-    public void read() {
-        Player player = new Player(6,5);
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            switch (scanner.next()) {
-                case "z":
-                    controller.goForward();
-                    break;
-                case "q":
-                    controller.handleRotation(Direction.East);
-                    break;
-                case "d":
-                    controller.handleRotation(Direction.West);
-                    break;
-                case "i":
-                    controller.handleInventory();
-                    break;
-                case "k":
-                    controller.handleInventory();
-                    break;
-            }
-
-        }
     }
 
     public void handle(KeyEvent event){

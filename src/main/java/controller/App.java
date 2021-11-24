@@ -2,12 +2,9 @@ package controller;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Direction;
-import model.GameState;
-import model.Player;
+import model.*;
 import model.generators.SimpleComponentGenerator;
 import model.generators.SimpleItemGenerator;
-import model.places.SimpleDungeon;
 
 public class App extends Application {
     /*
@@ -30,9 +27,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Player player = new Player(5,60);
-
-        GameController javaFXController = new JavaFXController(player);
+        GameController javaFXController = new JavaFXController();
         FXSceneController fxSceneController = FXSceneController.getInstance();
         fxSceneController.setPrimaryStage(primaryStage);
         fxSceneController.setGameController(javaFXController);

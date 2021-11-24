@@ -5,12 +5,11 @@ import javafx.scene.image.ImageView;
 import model.Character;
 import model.Item;
 import model.Player;
-import model.components.Component;
 
 import java.io.File;
 
 public class Chest implements Component {
-    private Item item;
+    private final Item item;
 
     public Chest(Item item) {
         this.item = item;
@@ -28,7 +27,7 @@ public class Chest implements Component {
 
     @Override
     public String getInteractAlert() {
-        return "You found : " + item.getName() + " !";
+        return "Vous trouvez :\n " + item.getName() + " !";
     }
 
     @Override

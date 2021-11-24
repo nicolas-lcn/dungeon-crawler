@@ -10,11 +10,11 @@ import java.io.File;
 public class Monster implements Component {
 
     private final Character avatar;
-    private Item loot;
+    private final Item loot;
     private final GameState gameState;
 
-    public Monster(int strength, int vitality, Item item, GameState gameState) {
-        avatar = new Character(strength, vitality);
+    public Monster(Character avatar, Item item, GameState gameState) {
+        this.avatar = avatar;
         this.loot = item;
         this.gameState = gameState;
     }

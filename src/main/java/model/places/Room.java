@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public abstract class Room {
 
-    protected final Component component;
+    protected Component component;
     protected final int nbPortals;
     protected final Direction previousDirection;
     protected final ArrayList<Direction> possibleDirections;
@@ -25,7 +25,7 @@ public abstract class Room {
     }
 
     public void removeComponent(){
-        //TODO
+        this.component = null;
     }
 
     public Component getComponent() {

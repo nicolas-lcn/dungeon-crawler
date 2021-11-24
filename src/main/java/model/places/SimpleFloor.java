@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class SimpleFloor implements Floor {
 
     private int playerPositionX;
-    private ArrayList<SimpleRoom> map;
-    private ComponentGenerator componentGenerator;
+    private final ArrayList<SimpleRoom> map;
+    private final ComponentGenerator componentGenerator;
 
 
     public SimpleFloor(Direction previousDirection, Player player, ComponentGenerator componentGenerator){

@@ -7,7 +7,7 @@ import model.generators.ComponentGenerator;
 
 public class SimpleDungeon extends Dungeon {
 
-    private ComponentGenerator componentGenerator;
+    private final ComponentGenerator componentGenerator;
 
     public SimpleDungeon(Direction direction, Player player, ComponentGenerator componentGenerator){
         this.componentGenerator = componentGenerator;

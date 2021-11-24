@@ -1,50 +1,21 @@
 package model;
 
-public class Character {
-    protected int strength;
-    protected int vitality;
-    protected boolean turnToAttack;
-    protected final int initialVitality;
+public interface Character {
+    int getStrength();
 
-    public Character(int strength, int vitality) {
-        this.strength = strength;
-        this.vitality = vitality;
-        initialVitality = vitality;
-    }
+    int getVitality();
 
-    public int getStrength() {
-        return strength;
-    }
+    void attack(Character target);
 
-    public int getVitality() {
-        return vitality;
-    }
+    void takeDamages(int damages);
 
-    public void attack(Character target){
-        target.takeDamages(this.strength);
-    }
+    void setStrength(int strength);
 
-    public void takeDamages(int damages){
-        vitality -= damages;
-    }
+    void setVitality(int vitality);
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
+    boolean isTurnToAttack();
 
-    public void setVitality(int vitality) {
-        this.vitality = vitality;
-    }
+    void setTurnToAttack(boolean turnToAttack);
 
-    public boolean isTurnToAttack() {
-        return turnToAttack;
-    }
-
-    public void setTurnToAttack(boolean turnToAttack) {
-        this.turnToAttack = turnToAttack;
-    }
-
-    public int getInitialVitality() {
-        return initialVitality;
-    }
+    int getInitialVitality();
 }

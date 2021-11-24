@@ -30,4 +30,6 @@ public interface GameController {
     void handleFight(boolean hasStarted, Character enemyFighter);
     void handleAttack();
     void handleAllPlayerPropertiesDisplay();
+    public void setGameStarted(boolean gameStarted);
+    public void reset();
 }

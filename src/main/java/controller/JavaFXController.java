@@ -25,8 +25,19 @@ public class JavaFXController implements GameController{
     boolean hasShownComponent;
     boolean isGameStarted;
 
-    public JavaFXController(Player player){
-        this.player = player;
+    @Override
+    public void setGameStarted(boolean gameStarted) {
+        isGameStarted = gameStarted;
+    }
+
+    @Override
+    public void reset() {
+        player = new SimplePlayer(new SimpleInventory(),new SimpleCharacter(8, 60));
+    }
+
+
+    public JavaFXController(){
+        this.player = new SimplePlayer(new SimpleInventory(),new SimpleCharacter(8, 60));
         fightCreator = new BasicFightCreator();
     }
 
@@ -85,6 +96,7 @@ public class JavaFXController implements GameController{
     public void startGame() {
         if(!isGameStarted) {
             hasShownComponent = false;
+            reset();
             gameState.resumeGame();
             this.setDungeon(new SimpleDungeon(Direction.South, player, componentGenerator));
             handleDoorDisplay();
@@ -137,7 +149,12 @@ public class JavaFXController implements GameController{
     @Override
     public void goForward() {
         int playerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
-        gameState.handleMovement(new Move(player.getLookingDirection()), player, dungeon);
+        if(MoveController.isMoveAuthorized(new SimpleMove(player.getLookingDirection()), dungeon.getCurrentFloor().getCurrentRoom())){
+            view.setUIText("Vous sortez de la pièce.");
+        }else{
+            view.setUIText("Un mur se trouve devant vous.");
+        }
+        gameState.handleMovement(new SimpleMove(player.getLookingDirection()), player, dungeon);
         int newPlayerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
         hasShownComponent = playerPosition==newPlayerPosition;
         handleComponentDisplay();
@@ -150,7 +167,6 @@ public class JavaFXController implements GameController{
     public void handleInventoryNavRight() {
         Inventory inventory = player.getInventory();
         inventory.setSelectedItemIndex(inventory.getSelectedItemIndex()+1);
-        System.out.println(inventory.getSelectedItemIndex());
         view.setSelector(inventory.getSelectedItemIndex());
     }
 
@@ -234,7 +250,7 @@ public class JavaFXController implements GameController{
             view.setRoomComponentImage(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getImageView());
             System.out.println(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
             view.setUIText(dungeon.getCurrentFloor().getCurrentRoom().getComponent().getInteractAlert());
-            view.waitToClear(1000);
+            view.waitToClear(2000);
         }
     }
 
