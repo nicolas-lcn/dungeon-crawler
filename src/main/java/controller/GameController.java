@@ -28,7 +28,7 @@ public interface GameController {
     void handleRight();
     void handleLeft();
     void handleFight(boolean hasStarted, Character enemyFighter);
-    void handleAttack();
+    void handlePlayerAttackFirst();
     void handleAllPlayerPropertiesDisplay();
     public void setGameStarted(boolean gameStarted);
     public void reset();

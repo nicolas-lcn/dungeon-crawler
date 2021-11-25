@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class FightView implements View{
     public ImageView EnemyImage;
     public Rectangle HPBar;
     public Rectangle HPBarMonster;
-    SequentialTransition seqT;
+
 
     Image monsterIdle = new Image(new File("src/main/java/view/assets/demon-idle.gif").toURI().toString());
     Image playerIdle = new Image(new File("src/main/java/view/assets/adventurer-idle.gif").toURI().toString());
@@ -124,7 +125,6 @@ public class FightView implements View{
         playerToEnemy.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 PlayerImage.setImage(new Image(
                         new File("src/main/java/view/assets/playerAttack.gif").toURI().toString()
                         )
@@ -147,7 +147,6 @@ public class FightView implements View{
             @Override
             public void handle(ActionEvent event) {
                 PlayerImage.setImage(playerIdle);
-                enemyAttack(playerVitality, playerInitVitality);
             }
         });
 
@@ -174,6 +173,13 @@ public class FightView implements View{
 
         PlayerImage.setImage(playerRunToRight);
         sequentialTransition.play();
+        sequentialTransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (enemyVitality > 0)
+                    FightView.this.enemyAttack(playerVitality, playerInitVitality);
+            }
+        });
     }
 
     private void enemyAttack(int playerVitality, int playerInitVitality) {

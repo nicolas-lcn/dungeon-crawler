@@ -11,6 +11,8 @@ import model.places.Dungeon;
 import model.places.SimpleDungeon;
 import view.View;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class JavaFXController implements GameController{
 
     GameState gameState;
@@ -154,6 +156,7 @@ public class JavaFXController implements GameController{
         }else{
             view.setUIText("Un mur se trouve devant vous.");
         }
+        view.waitToClear(1000);
         gameState.handleMovement(new SimpleMove(player.getLookingDirection()), player, dungeon);
         int newPlayerPosition = dungeon.getCurrentFloor().getPlayerPositionX();
         hasShownComponent = playerPosition==newPlayerPosition;
@@ -208,19 +211,18 @@ public class JavaFXController implements GameController{
     }
 
     @Override
-    public void handleAttack() {
+    public void handlePlayerAttackFirst() {
         player.getAvatar().setTurnToAttack(true);
         boolean isFightOver = fight.fight();
+        Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
+        view.playerAttack(
+                player.getAvatar().getVitality(),
+                player.getAvatar().getInitialVitality(),
+                enemy.getAvatar().getVitality(),
+                enemy.getAvatar().getInitialVitality()
+        );
         if(isFightOver) gameState.endFight();
-        else{
-            Component enemy = dungeon.getCurrentFloor().getCurrentRoom().getComponent();
-            view.playerAttack(
-                    player.getAvatar().getVitality(),
-                    player.getAvatar().getInitialVitality(),
-                    enemy.getAvatar().getVitality(),
-                    enemy.getAvatar().getInitialVitality()
-            );
-        }
+
     }
 
     @Override

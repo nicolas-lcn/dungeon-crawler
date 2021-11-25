@@ -22,7 +22,6 @@ public interface View {
     void setNumberOfItems(ArrayList<Integer> itemsNumbers);
     void setNumberVisible(int index);
     void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality);
-
     void waitToClear(int millis);
     void waitToShow(int millis, boolean hasToShow);
     void updateHPBar(int remainingVitality, int maxVitality);

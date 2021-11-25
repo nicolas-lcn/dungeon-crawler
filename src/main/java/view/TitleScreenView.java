@@ -3,6 +3,7 @@ package view;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TitleScreenView implements View{
     @Override
@@ -88,7 +89,6 @@ public class TitleScreenView implements View{
 
     @Override
     public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
-
     }
 
     @Override

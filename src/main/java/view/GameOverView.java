@@ -3,6 +3,7 @@ package view;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameOverView implements View{
     @Override

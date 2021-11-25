@@ -11,6 +11,7 @@ import javafx.util.Duration;
 import model.GameState;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameView implements View{
 
@@ -125,7 +126,6 @@ public class GameView implements View{
 
     @Override
     public void playerAttack(int playerVitality, int playerInitVitality, int enemyVitality, int enemyInitVitality) {
-
     }
 
     @Override

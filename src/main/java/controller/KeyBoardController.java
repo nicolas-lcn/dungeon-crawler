@@ -19,7 +19,7 @@ public class KeyBoardController {
             case ESCAPE: controller.quitGame();break;
             case G: controller.startGame();break;
             case E: controller.handleUseItem(); break;
-            case A: controller.handleAttack(); break;
+            case A: controller.handlePlayerAttackFirst(); break;
         }
 
     }
